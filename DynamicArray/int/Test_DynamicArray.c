@@ -2,7 +2,7 @@
 
 #include "DynamicArray.h"
 
-int main() {
+int test_DynamicArray() {
 
     Dynamic_Array *arr = Init_Dynamic_Array();
 

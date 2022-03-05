@@ -18,7 +18,7 @@ void MyPrint(void* data){
     printf("Name:%s Age:%d Score:%d\n",p->name,p->age,p->score);
 }
 
-int main(void){
+int test_LinkList(void){
 
 
     //创建链表

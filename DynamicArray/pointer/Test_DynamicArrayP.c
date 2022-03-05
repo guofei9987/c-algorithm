@@ -13,7 +13,7 @@ void My_Print(Person *data) {
 }
 
 
-int main() {
+int tst_DynamicArrayP() {
 
     Dynamic_Array_P *dynamicArray = Init_Dynamic_Array_P();
 

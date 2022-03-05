@@ -9,7 +9,7 @@ typedef struct PERSON {
     int age;
 } Person;
 
-void My_Print(Linked_Node *node) {
+void My_Print1(Linked_Node *node) {
     Person *p = (Person *) node;
     printf("[name = %s, age = %d] -> ", p->name, p->age);
 }
@@ -24,7 +24,7 @@ int My_Compare(Linked_Node *node1, Linked_Node *node2) {
     return -1;
 }
 
-int main() {
+int test_LinkedList() {
 
     Linked_List *linkedList = Init_Linked_List();
     Person p1, p2, p3, p4, p5;
@@ -46,11 +46,11 @@ int main() {
     Insert_Linked_List(linkedList, 0, (Linked_Node *) &p4);
     Insert_Linked_List(linkedList, 0, (Linked_Node *) &p5);
 
-    Print_Linked_List(linkedList, My_Print);
+    Print_Linked_List(linkedList, My_Print1);
 
     Remove_Linked_List(linkedList, 1);
 
-    Print_Linked_List(linkedList, My_Print);
+    Print_Linked_List(linkedList, My_Print1);
 
 //    查找
     Person p_find;
