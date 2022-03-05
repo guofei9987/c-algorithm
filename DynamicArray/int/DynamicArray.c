@@ -1,4 +1,4 @@
-#include "Dynamic_Array.h"
+#include "DynamicArray.h"
 
 //初始化
 Dynamic_Array *Init_Dynamic_Array() {
