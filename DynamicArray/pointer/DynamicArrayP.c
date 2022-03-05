@@ -1,8 +1,8 @@
-#include "DynamicArray.h"
+#include "DynamicArrayP.h"
 
 //初始化
-Dynamic_Array *Init_Dynamic_Array() {
-    Dynamic_Array *arr = (Dynamic_Array *) malloc(sizeof(Dynamic_Array));
+Dynamic_Array_P *Init_Dynamic_Array_P() {
+    Dynamic_Array_P *arr = (Dynamic_Array_P *) malloc(sizeof(Dynamic_Array_P));
     arr->capacity = 50;
     arr->size = 0;
     arr->pAddr = (void *) malloc(sizeof(void *) * arr->capacity);
@@ -10,15 +10,10 @@ Dynamic_Array *Init_Dynamic_Array() {
 
 }
 
-//插入
-void Push_Last_Dynamic_Array(Dynamic_Array *arr, void *data) {
-
-    Push_Dynamic_Array(arr, arr->size, data);
-
-}
 
 
-void Push_Dynamic_Array(Dynamic_Array *arr, int idx, void *data) {
+
+void Push_Dynamic_Array_P(Dynamic_Array_P *arr, int idx, void *data) {
     if (arr == NULL) {
         return;
     }
@@ -53,9 +48,16 @@ void Push_Dynamic_Array(Dynamic_Array *arr, int idx, void *data) {
     arr->size++;
 }
 
+//插入
+void Push_Last_Dynamic_Array_P(Dynamic_Array_P *arr, void *data) {
+
+    Push_Dynamic_Array_P(arr, arr->size, data);
+
+}
+
 
 //打印
-void Print_Dynamic_Array(Dynamic_Array *arr, PRINT_DATA printData) {
+void Print_Dynamic_Array_P(Dynamic_Array_P *arr, PRINT_DATA printData) {
     if (arr == NULL) {
         return;
     }
@@ -68,7 +70,7 @@ void Print_Dynamic_Array(Dynamic_Array *arr, PRINT_DATA printData) {
 
 //删除一个
 //TODO:被删除的内存需要释放吗？
-void Pop_Dynamic_Array(Dynamic_Array *arr, int idx) {
+void Pop_Dynamic_Array_P(Dynamic_Array_P *arr, int idx) {
     if (arr == NULL) {
         return;
     }
@@ -84,17 +86,17 @@ void Pop_Dynamic_Array(Dynamic_Array *arr, int idx) {
 }
 
 //取一个
-void *Get_Dynamic_Array(Dynamic_Array *arr, int idx) {
+void *Get_Dynamic_Array_P(Dynamic_Array_P *arr, int idx) {
     return arr->pAddr[idx];
 }
 
 //赋值
-void Set_Dynamic_Array(Dynamic_Array *arr, int idx, void *data) {
+void Set_Dynamic_Array_P(Dynamic_Array_P *arr, int idx, void *data) {
     arr->pAddr[idx] = data;
 }
 
 //查找
-int Find_Dynamic_Array(Dynamic_Array *arr, void *data) {
+int Find_Dynamic_Array_P(Dynamic_Array_P *arr, void *data) {
     for (int i = 0; i < arr->size; i++) {
         if (arr->pAddr[i] == data) {
             return i;
@@ -105,13 +107,13 @@ int Find_Dynamic_Array(Dynamic_Array *arr, void *data) {
 
 
 //从最后删除
-void Pop_Last_Dynamic_Array(Dynamic_Array *arr) {
-    Pop_Dynamic_Array(arr, arr->size - 1);
+void Pop_Last_Dynamic_Array_P(Dynamic_Array_P *arr) {
+    Pop_Dynamic_Array_P(arr, arr->size - 1);
 }
 
 
 //释放空间
-void Free_Dynamic_Array(Dynamic_Array *arr) {
+void Free_Dynamic_Array_P(Dynamic_Array_P *arr) {
     if (arr == NULL) {
         return;
     }
