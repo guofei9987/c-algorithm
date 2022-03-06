@@ -1,61 +1,44 @@
 #include "BinaryTree.h"
 
+enum travel_type {
+    traversal_ldr, traversal_dlr, traversal_lrd
+};
 
-
-
-void travel(struct TreeNode *root, int *ret, int *size) {
-    if (root == NULL)return;
-    travel(root->left, ret, size);
-    ret[(*size)++] = root->val;
-    travel(root->right, ret, size);
-}
-
-int *inorderTraversal(struct TreeNode *root, int *returnSize) {
+int *Traversal(struct TreeNode *root, int *returnSize, enum travel_type travelType) {
     *returnSize = 0;
     int *ret = malloc(sizeof(int) * 100);
-    travel(root, ret, returnSize);
-    return ret;
-}
-
-/////////////////////////////////////////////////////////
-
-
-
-void travel(struct TreeNode *root, int *ret, int *size) {
-    if (root == NULL)return;
-    ret[(*size)++] = root->val;
-    travel(root->left, ret, size);
-    travel(root->right, ret, size);
-}
-
-//DLR
-int *preorderTraversal(struct TreeNode *root, int *returnSize) {
-    *returnSize = 0;
-    int *ret = malloc(sizeof(int) * 100);
-    travel(root, ret, returnSize);
+    switch (travelType) {
+        case traversal_ldr:
+            ldr(root, ret, returnSize);
+        case traversal_dlr:
+            dlr(root, ret, returnSize);
+        case traversal_lrd:
+            lrd(root, ret, returnSize);
+    }
     return ret;
 }
 
 
-/////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////
-
-
-
-void travel(struct TreeNode *root, int *ret, int *size) {
+void ldr(struct TreeNode *root, int *ret, int *size) {
     if (root == NULL)return;
-    travel(root->left, ret, size);
-    travel(root->right, ret, size);
+    ldr(root->left, ret, size);
+    ret[(*size)++] = root->val;
+    ldr(root->right, ret, size);
+}
+
+void dlr(struct TreeNode *root, int *ret, int *size) {
+    if (root == NULL)return;
+    ret[(*size)++] = root->val;
+    dlr(root->left, ret, size);
+    dlr(root->right, ret, size);
+}
+
+
+void lrd(struct TreeNode *root, int *ret, int *size) {
+    if (root == NULL)return;
+    lrd(root->left, ret, size);
+    lrd(root->right, ret, size);
     ret[(*size)++] = root->val;
 }
 
-int *postorderTraversal(struct TreeNode *root, int *returnSize) {
-    *returnSize = 0;
-    int *ret = malloc(sizeof(int) * 100);
-    travel(root, ret, returnSize);
-    return ret;
-}
 
-
-/////////////////////////////////////////////////////////
