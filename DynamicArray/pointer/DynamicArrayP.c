@@ -11,8 +11,6 @@ Dynamic_Array_P *Init_Dynamic_Array_P() {
 }
 
 
-
-
 void Push_Dynamic_Array_P(Dynamic_Array_P *arr, int idx, void *data) {
     if (arr == NULL) {
         return;
@@ -87,6 +85,9 @@ void Pop_Dynamic_Array_P(Dynamic_Array_P *arr, int idx) {
 
 //取一个
 void *Get_Dynamic_Array_P(Dynamic_Array_P *arr, int idx) {
+    if (idx >= arr->size) {
+        return NULL;
+    }
     return arr->pAddr[idx];
 }
 
