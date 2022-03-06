@@ -1,34 +1,61 @@
 #include "BinaryTree.h"
 
+
+
+
+void travel(struct TreeNode *root, int *ret, int *size) {
+    if (root == NULL)return;
+    travel(root->left, ret, size);
+    ret[(*size)++] = root->val;
+    travel(root->right, ret, size);
+}
+
+int *inorderTraversal(struct TreeNode *root, int *returnSize) {
+    *returnSize = 0;
+    int *ret = malloc(sizeof(int) * 100);
+    travel(root, ret, returnSize);
+    return ret;
+}
+
+/////////////////////////////////////////////////////////
+
+
+
+void travel(struct TreeNode *root, int *ret, int *size) {
+    if (root == NULL)return;
+    ret[(*size)++] = root->val;
+    travel(root->left, ret, size);
+    travel(root->right, ret, size);
+}
+
 //DLR
 int *preorderTraversal(struct TreeNode *root, int *returnSize) {
-    int *result = NULL;
     *returnSize = 0;
-
-    if (root == NULL) {
-        return result;
-    }
-
-
-    struct TreeNode **stack = (struct TreeNode **) malloc(sizeof(struct TreeNode *));
-    struct TreeNode *pop;
-    int length = 0;
-    stack[length++] = root;
-
-    while (length > 0) {
-        result = (int *) realloc(result, (*returnSize + 1) * sizeof(int));
-        pop = stack[--length];
-        result[*returnSize] = pop->val;
-        *returnSize += 1;
-        if (pop->right) {
-            stack = (struct TreeNode **) realloc(stack, sizeof(struct TreeNode *) * (length + 1));
-            stack[length++] = pop->right;
-        }
-        if (pop->left) {
-            stack = (struct TreeNode **) realloc(stack, sizeof(struct TreeNode *) * (length + 1));
-            stack[length++] = pop->left;
-        }
-    }
-    free(stack);
-    return result;
+    int *ret = malloc(sizeof(int) * 100);
+    travel(root, ret, returnSize);
+    return ret;
 }
+
+
+/////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////
+
+
+
+void travel(struct TreeNode *root, int *ret, int *size) {
+    if (root == NULL)return;
+    travel(root->left, ret, size);
+    travel(root->right, ret, size);
+    ret[(*size)++] = root->val;
+}
+
+int *postorderTraversal(struct TreeNode *root, int *returnSize) {
+    *returnSize = 0;
+    int *ret = malloc(sizeof(int) * 100);
+    travel(root, ret, returnSize);
+    return ret;
+}
+
+
+/////////////////////////////////////////////////////////
