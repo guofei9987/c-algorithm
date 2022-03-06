@@ -63,6 +63,13 @@ KMP 算法复杂度为 O(m+n)
 
 https://www.bilibili.com/video/BV1jb411V78H
 
+## list(广义表)
+
+1. 类似python中的这种类型： [1,[1,2,3,[3,4]]]
+2. 用链式存储实现
+
+
+
 
 ## 二叉树
 
