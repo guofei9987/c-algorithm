@@ -121,25 +121,48 @@ int **levelOrder(struct TreeNode *root, int **columnSizes, int *returnSize) {
     return ret;
 }
 
-/*
- *
- *
- *     def level_order(self, root):
-        # BFS, tree转稀疏型顺序存储。
-        q, ret = [root], []
-        while any(q):
-            ret.extend([node.val if node else None for node in q])
-            q = [child for node in q for child in [node.left if node else None, node.right if node else None]]
-        return ret
+//获取树深度
+void _get_depth(struct TreeNode *root, int count, int *depth) {
+    if (root == NULL) {
+        if (count > *depth)
+            *depth = count;
+        return;
+    }
 
-    def level_order2(self, root):
-        # BFS, tree转紧凑型顺序存储。
-        q, ret = [root], []
-        while any(q):
-            ret.extend([node.val if node else None for node in q])
-            q = [child for node in q if node for child in [node.left, node.right]]
-        # 结尾的 None 无意义，清除掉
-        while ret[-1] is None:
-            ret.pop()
-        return ret
- */
+    _get_depth(root->left, count + 1, depth);
+    _get_depth(root->right, count + 1, depth);
+}
+
+int get_depth(struct TreeNode *root) {
+    int v_depth = 0;
+    int *depth = &v_depth;
+    _get_depth(root, 0, depth);
+    return *depth;
+}
+
+//另一个 level order 方案
+//https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/931/discuss/1602435/C-Iterative-Solution-using-a-Queue
+
+void travel(struct TreeNode *root, int **returnColumnSizes, int level, int **result) {
+    if (root == NULL)
+        return;
+    result[level][(*returnColumnSizes)[level]++] = root->val;
+    travel(root->left, returnColumnSizes, level + 1, result);
+    travel(root->right, returnColumnSizes, level + 1, result);
+}
+
+int **levelOrder(struct TreeNode *root, int *returnSize, int **returnColumnSizes) {
+    int **result;
+
+    int size = get_depth(root);
+
+
+    result = (int **) malloc(size * sizeof(int *));
+    for (int i = 0; i < size; i++)
+        result[i] = (int *) malloc(sizeof(int) * 256);
+
+    *returnColumnSizes = (int *) calloc(size, sizeof(int));
+    travel(root, returnColumnSizes, 0, result);
+    *returnSize = size;
+    return result;
+}
