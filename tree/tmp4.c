@@ -1,15 +1,19 @@
-int size = 0;
-//int **result;
-
-void get_depth(struct TreeNode *root, int count) {
+void _get_depth(struct TreeNode *root, int count, int *depth) {
     if (root == NULL) {
-        if (count > size)
-            size = count;
+        if (count > *depth)
+            *depth = count;
         return;
     }
 
-    get_depth(root->left, count + 1);
-    get_depth(root->right, count + 1);
+    _get_depth(root->left, count + 1, depth);
+    _get_depth(root->right, count + 1, depth);
+}
+
+int get_depth(struct TreeNode *root) {
+    int v_depth = 0;
+    int *depth = &v_depth;
+    _get_depth(root, 0, depth);
+    return *depth;
 }
 
 void travel(struct TreeNode *root, int **returnColumnSizes, int level, int **result) {
@@ -24,8 +28,7 @@ void travel(struct TreeNode *root, int **returnColumnSizes, int level, int **res
 int **levelOrder(struct TreeNode *root, int *returnSize, int **returnColumnSizes) {
     int **result;
 
-    size = 0;
-    get_depth(root, 0);
+    int size = get_depth(root);
 
 
     result = (int **) malloc(size * sizeof(int *));
