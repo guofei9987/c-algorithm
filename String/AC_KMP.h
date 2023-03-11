@@ -4,5 +4,8 @@
 
 #ifndef C_ALGORITHM_AC_KMP_H
 #define C_ALGORITHM_AC_KMP_H
+#include <string.h>
+#include "DynamicArray.h"
+
 
 #endif //C_ALGORITHM_AC_KMP_H

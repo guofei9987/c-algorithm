@@ -1,8 +1,10 @@
 #ifndef C_ALGORITHM_RECURRENT_H
 #define C_ALGORITHM_RECURRENT_H
 
-#include <assert.h>
 #include <stdlib.h>
+#include <assert.h>
+
+//可以用来作为 queue 来使用
 
 #define MAX_SIZE 100;
 
@@ -53,5 +55,5 @@ int Is_Empty_Rec_Array(Rec_Array *arr);
 //是否已满
 int Is_Full_Rec_Array(Rec_Array *arr);
 
-
+void Free_Push_Rec_Array();
 #endif //C_ALGORITHM_RECURRENT_H

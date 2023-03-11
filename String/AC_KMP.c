@@ -1,6 +1,7 @@
 
 #include "AC_KMP.h"
 
+
 //const int M = 500010;
 const int M = 100; // ？？应该是 keyword 的长度之和
 int fail[M], ch[M][30], bo[M];
