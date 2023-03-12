@@ -48,10 +48,10 @@ DATA_TYPE Get_Tail_Rec_Array(Rec_Array *arr);
 DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr);
 
 //是否为空
-int is_empty(Rec_Array *arr);
+int Is_Empty_Rec_Array(Rec_Array *arr);
 
 //是否已满
-int is_full(Rec_Array *arr);
+int Is_Full_Rec_Array(Rec_Array *arr);
 
 
 #endif //C_ALGORITHM_RECURRENT_H

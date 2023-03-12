@@ -14,26 +14,26 @@ Rec_Array *Init_REC_ARRAY(int capacity) {
 
 //尾部插入
 void Push_Rec_Array(Rec_Array *arr, DATA_TYPE val) {
-    assert(!is_full(arr));
+    assert(!Is_Full_Rec_Array(arr));
     arr->tail = (arr->tail + 1) % arr->size;
     arr->pAddr[arr->tail] = val;
 };
 
 // 获取头部
 DATA_TYPE Get_Front_Rec_Array(Rec_Array *arr) {
-    assert(!is_full(arr));
+    assert(!Is_Full_Rec_Array(arr));
     return arr->pAddr[arr->front];
 }
 
 //删除头部
 void Del_Front_Rec_Array(Rec_Array *arr) {
-    assert(!is_full(arr));
+    assert(!Is_Full_Rec_Array(arr));
     arr->front = (arr->front + 1) % arr->size;
 }
 
 // 获取头部，然后删掉它
 DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr) {
-    assert(!is_full(arr));
+    assert(!Is_Full_Rec_Array(arr));
     DATA_TYPE tmp = arr->pAddr[arr->front];
     arr->front = (arr->front + 1) % arr->size;
     return tmp;
@@ -48,12 +48,12 @@ DATA_TYPE Get_Tail_Rec_Array(Rec_Array *arr);
 DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr);
 
 //是否为空
-int is_empty(Rec_Array *arr) {
+int Is_Empty_Rec_Array(Rec_Array *arr) {
     return (arr->tail + 1) % arr->size == arr->front;
 };
 
 //是否已满
-int is_full(Rec_Array *arr) {
+int Is_Full_Rec_Array(Rec_Array *arr) {
     return (arr->tail + 2) % arr->size == arr->front;
 };
 

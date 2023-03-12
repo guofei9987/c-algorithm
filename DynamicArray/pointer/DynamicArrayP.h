@@ -11,10 +11,10 @@ typedef struct DYNAMIC_ARRAY_P {
     int size;
 } Dynamic_Array_P;
 
-//遍历函数指针
+//函数指针-打印一个节点
 typedef void (*PRINT_DATA)(void *);
 
-//比较函数指针
+//函数指针-比较两个节点
 typedef int (*COMPARE_DATA)(void *, void *);
 
 //初始化

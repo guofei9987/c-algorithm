@@ -24,6 +24,8 @@ add_executable(c_algorithm
         LinkedList/old/Test_LinkList.c
         DynamicArray/RecurrentArray/RecurrentArray.c
         DynamicArray/RecurrentArray/RecurrentArray.h
+        String/AC_KMP.c
+        String/AC_KMP.h
         kmp.c
         )
 

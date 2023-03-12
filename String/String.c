@@ -1,5 +1,9 @@
 //
 // Created by 郭飞 on 2023/2/23.
+//实现了以下功能：
+// 记录长度和cap
+//添加一个 char
+//添加一个字符串
 //
 
 
@@ -18,6 +22,7 @@ struct String {
 //新建
 struct String *string_build(char *s, int len_s, int cap) {
     struct String *string = malloc(sizeof(struct String));
+//    初始化时全部归零
     string->data = calloc(cap, sizeof(char));
     strcpy(string->data, s);
     string->len = len_s;
@@ -29,23 +34,21 @@ struct String *string_build(char *s, int len_s, int cap) {
 struct String *string_append(struct String *string, char c) {
     if (string->len + 1 > string->cap) {
 //        需要扩展内存
-        string->cap = string->cap * 2 + 1;
+        string->cap = string->cap * 2 + 2;
         string->data = realloc(string->data, string->cap);
     }
 
     string->data[string->len] = c;
     string->len += 1;
 
-    string->data[string->len] = 0;
-
     return string;
 }
 
 //添加一个 char *
 struct String *string_add(struct String *string, char *s, int len_s) {
-    if (string->len + len_s > string->cap) {
+    if (string->len + len_s + 2 >= string->cap) {
 //      扩展内存
-        string->cap = string->len + len_s;
+        string->cap = string->len + len_s + 2;
         string->data = realloc(string->data, string->cap);
     }
 //    这个性能高呢，还是用for循环性能高呢？
