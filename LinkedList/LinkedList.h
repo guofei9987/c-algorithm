@@ -16,7 +16,7 @@ typedef struct {
     int size;
 } LinkedList;
 
-LinkedList *LinkedListCreate();
+LinkedList *LinkedList_Init();
 
 int LinkedListGet(LinkedList *obj, int idx);
 
@@ -28,7 +28,9 @@ void LinkedListAddAtIndex(LinkedList *obj, int idx, int val);
 
 void LinkedListDeleteAtIndex(LinkedList *obj, int idx);
 
-int LinkedListDelByVal(LinkedList *obj, int val);
+int LinkedList_DelByVal(LinkedList *obj, int val);
+
+int LinkedList_Find(LinkedList *obj, int val);
 
 void LinkedListFree(LinkedList *obj);
 

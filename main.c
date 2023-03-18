@@ -6,6 +6,9 @@
 #include "tests/Test_DynamicArrayP.h"
 #include "tests/Test_RecurrentArray.h"
 #include "tests/Test_LinkedList.h"
+#include "tests/Test_Hash.h"
+
+
 
 int main() {
 
@@ -18,5 +21,10 @@ int main() {
 
     test_LinkedList();
 
+     test_Hash();
+
     return 0;
 }
+
+
+

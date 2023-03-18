@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "Hash.h"
-#include "LinkedList.h"
-#include "DynamicArray.h"
+
 // 要做 dict：可以改动 LinkedNode，它的值字段改为 int key, int val
 // 要支持所有类型：LinkedNode 的字段可以用 void*
 // 这里只实现一个最简单的：HashSet<int>
@@ -37,36 +36,35 @@ int hash_int(int x) {
 }
 
 
-//下面构建HashMap
-typedef struct HashElement {
-    LinkedList *link;
-} HashElement;
-
-typedef struct HashSet {
-    HashElement *hashElement;
-    int num_bucket;
-} HashSet;
-
-
 HashSet *HashSet_Init(int num_bucket) {
     HashSet *obj = malloc(sizeof(HashSet));
-    obj->hashElement = malloc(num_bucket * sizeof(HashElement));
+    obj->linkedList = malloc(num_bucket * sizeof(LinkedList));
+
+    for (int i = 0; i < num_bucket; i++) {
+        obj->linkedList[i] = LinkedList_Init();
+    }
+
+
     obj->num_bucket = num_bucket;
     return obj;
 }
 
+
 void HashMap_Add(HashSet *obj, int key) {
-    LinkedListAddAtHead(obj->hashElement[hash_int(key) % obj->num_bucket].link, key);
+    LinkedList *tmp = obj->linkedList[hash_int(key) % obj->num_bucket];
+    if (LinkedList_Find(tmp, key) == -1) {
+        LinkedListAddAtHead(tmp, key);
+    }
+
+}
+
+int HashMap_Has(HashSet *obj, int key) {
+    return LinkedList_Find(
+            obj->linkedList[hash_int(key) % obj->num_bucket], key) != -1;
 }
 
 void HashSet_del(HashSet *obj, int key) {
-    LinkedListDelByVal(obj->hashElement[hash_int(key) % obj->num_bucket].link, key);
+    LinkedList_DelByVal(obj->linkedList[hash_int(key) % obj->num_bucket], key);
 }
 
 
-void HashSet2Array(HashSet *obj) {
-    DynamicArray *dynamicArray = DynamicArray_Init(30);
-
-//    Push_Dynamic_Array(dynamicArray,)
-
-}

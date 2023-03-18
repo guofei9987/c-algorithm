@@ -2,7 +2,7 @@
 
 
 //统一建造含 dummy 的 LinkedList
-LinkedList *LinkedListCreate() {
+LinkedList *LinkedList_Init() {
     LinkedList *obj = malloc(sizeof(LinkedList));
     obj->size = 0;
     obj->head = malloc(sizeof(LinkedNode));
@@ -77,7 +77,7 @@ void LinkedListDeleteAtIndex(LinkedList *obj, int idx) {
 }
 
 //删除第一个出现的val，未充分测试
-int LinkedListDelByVal(LinkedList *obj, int val) {
+int LinkedList_DelByVal(LinkedList *obj, int val) {
     LinkedNode *p = obj->head;
     while (p->next) {
         if (p->next->val == val) {
@@ -91,6 +91,18 @@ int LinkedListDelByVal(LinkedList *obj, int val) {
     return 0;// 未找到
 }
 
+//返回第一个出现的val，如果没找到则返回 -1，未充分测试
+int LinkedList_Find(LinkedList *obj, int val) {
+    int idx = 0;
+    LinkedNode *p = obj->head;
+    while (p->next) {
+        if (p->next->val == val) {
+            return idx;
+        }
+        idx++;
+    }
+    return -1;
+}
 
 
 void LinkedListFree(LinkedList *obj) {

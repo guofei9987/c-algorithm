@@ -48,6 +48,7 @@ void DynamicArray_Print(DynamicArray *arr) {
     if (arr == NULL) {
         return;
     }
+    printf("<Dynamic Array>: ");
     for (int i = 0; i < arr->size; i++) {
         printf("%d,", arr->pAddr[i]);
     }
