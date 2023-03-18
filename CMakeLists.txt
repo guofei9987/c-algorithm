@@ -6,8 +6,8 @@ set(CMAKE_C_STANDARD 99)
 include_directories(DynamicArray/int)
 include_directories(DynamicArray/pointer)
 include_directories(DynamicArray/RecurrentArray)
-include_directories(LinkedList/new)
-include_directories(LinkedList/old)
+include_directories(LinkedList)
+include_directories(Hash)
 
 add_executable(c_algorithm
         main.c
@@ -17,16 +17,16 @@ add_executable(c_algorithm
         DynamicArray/pointer/DynamicArrayP.h
         DynamicArray/RecurrentArray/RecurrentArray.c
         DynamicArray/RecurrentArray/RecurrentArray.h
-        LinkedList/new/LinkedList.c
-        LinkedList/new/LinkedList.h
-        LinkedList/new/Test_LinkedList.c
-        LinkedList/old/LinkList.c
-        LinkedList/old/LinkList.h
-        tests/Test_LinkList.c
+        LinkedList/LinkedList.c
+        LinkedList/LinkedList.h
+        LinkedList/old/Test_LinkList.c
+        Hash/Hash.c
+        Hash/Hash.h
         tests/Test_DynamicArrayP.c
         tests/Test_DynamicArray.c
         tests/Test_RecurrentArray.c
-
+        tests/Test_LinkedList.c
+        tests/Test_LinkedList.h
         #        String/AC_KMP.c
 #        String/AC_KMP.h
         kmp.c

@@ -1,4 +1,5 @@
 #include "RecurrentArray.h"
+//循环array
 
 
 Rec_Array *Init_REC_ARRAY(int capacity) {
@@ -42,23 +43,33 @@ DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr) {
 
 
 //获取尾巴
-DATA_TYPE Get_Tail_Rec_Array(Rec_Array *arr);
+DATA_TYPE Get_Tail_Rec_Array(Rec_Array *arr) {
+    assert(!Is_Full_Rec_Array(arr));
+    return arr->pAddr[arr->tail];
+}
 
 //去除尾巴并返回它
-DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr);
+DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr) {
+    assert(!Is_Full_Rec_Array(arr));
+    DATA_TYPE tmp = arr->pAddr[arr->tail];
+    arr->tail -= 1;
+    if (arr->tail == -1) {
+        arr->tail = arr->size - 1;
+    }
+    return tmp;
+}
 
 //是否为空
 int Is_Empty_Rec_Array(Rec_Array *arr) {
     return (arr->tail + 1) % arr->size == arr->front;
-};
+}
 
 //是否已满
 int Is_Full_Rec_Array(Rec_Array *arr) {
     return (arr->tail + 2) % arr->size == arr->front;
 };
 
-void Free_Push_Rec_Array(Rec_Array *arr) {
-
+void Free_Rec_Array(Rec_Array *arr) {
     free(arr->pAddr);
     free(arr);
 }

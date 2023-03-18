@@ -4,9 +4,8 @@
 
 #include "tests/Test_DynamicArray.h"
 #include "tests/Test_DynamicArrayP.h"
-#include "tests/Test_LinkList.h"
 #include "tests/Test_RecurrentArray.h"
-
+#include "tests/Test_LinkedList.h"
 
 int main() {
 
@@ -17,7 +16,7 @@ int main() {
 
     tst_DynamicArrayP();
 
-    test_LinkList();
+    test_LinkedList();
 
     return 0;
 }

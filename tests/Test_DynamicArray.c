@@ -7,7 +7,7 @@
 int test_DynamicArray() {
     printf("======测试 %s ======\n", __FILE_NAME__);
 
-    Dynamic_Array *arr = Init_Dynamic_Array();
+    Dynamic_Array *arr = Init_Dynamic_Array(20);
 
     for (int i = 0; i < 30; i++) {
         Push_Dynamic_Array(arr, i);

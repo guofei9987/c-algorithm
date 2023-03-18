@@ -5,38 +5,47 @@
 #include<stdio.h>
 
 //链表结点
-typedef struct LINKNODE{
-    void* data;  //指向任何类型的数据
-    struct LINKNODE* next;
-}LinkNode;
+typedef struct LINKNODE {
+    struct LINKNODE *next;
+    void *data;  //指向任何类型的数据
+} LinkNode;
 
 //链表结构体
-typedef struct LINKLIST{
-    LinkNode* head;
+typedef struct LINKLIST {
+    LinkNode *head;
     int size;
-}LinkList;
-
+} LinkList;
 
 
 //初始化链表
-LinkList* Init_LinkList();
+LinkList *Init_LinkList();
+
+//TODO: 获取指定位置
+int GetByPos_LinkList(LinkList *list, int pos);
+
 //指定位置插入
-void Insert_LinkList(LinkList* list,int pos,void* data);
+void Insert_LinkList(LinkList *list, int pos, void *data);
+
 //删除指定位置的值
-void RemoveByPos_LinkList(LinkList* list, int pos);
+void RemoveByPos_LinkList(LinkList *list, int pos);
+
 //获得链表的长度
-int Size_LinkList(LinkList* list);
+int Size_LinkList(LinkList *list);
+
 //查找
-int Find_LinkList(LinkList* list,void* data);
+int Find_LinkList(LinkList *list, void *data);
+
 //返回第一个结点
-void* Front_LinkList(LinkList* list);
+void *Front_LinkList(LinkList *list);
+
 //释放链表内存
-void FreeSpace_LinkList(LinkList* list);
+void FreeSpace_LinkList(LinkList *list);
 
 
 //不知道用户要打印什么，所以定义一个打印函数指针，用户传入print即可
-typedef void(*PRINTLINKNODE)(void*);
+typedef void(*PRINTLINKNODE)(void *);
+
 //打印链表结点
-void Print_LinkList(LinkList* list, PRINTLINKNODE print);
+void Print_LinkList(LinkList *list, PRINTLINKNODE print);
 
 #endif

@@ -1,32 +1,46 @@
 #include "DynamicArray.h"
 
 //初始化
-Dynamic_Array *Init_Dynamic_Array() {
+Dynamic_Array *Init_Dynamic_Array(int capacity) {
     Dynamic_Array *arr = (Dynamic_Array *) malloc(sizeof(Dynamic_Array));
-    arr->capacity = 20;
+    arr->capacity = capacity;
     arr->size = 0;
     arr->pAddr = (int *) malloc(sizeof(int) * arr->capacity);
     return arr;
 }
 
-//插入
-void Push_Dynamic_Array(Dynamic_Array *arr, int val) {
-    if (arr == NULL) {
-        return;
+//重新分配内存
+void Reloc_Dynamic_Array(Dynamic_Array *arr, int new_capacity) {
+//    assert(new_capacity>arr->size)
+    int *newPArr = (int *) malloc(sizeof(int) * arr->capacity);
+    memcpy(newPArr, arr->pAddr, sizeof(int) * arr->size);
+    free(arr->pAddr);
+    arr->pAddr = newPArr;
+    arr->capacity = new_capacity;
+}
+
+// 减少内存消耗
+void Lose_Weight_Dynamic_Array(Dynamic_Array *arr) {
+    if (arr->size == 0) {
+        Reloc_Dynamic_Array(arr, 1);
+    } else {
+        Reloc_Dynamic_Array(arr, arr->size);
     }
+}
 
+
+//尾部插入
+void Push_Dynamic_Array(Dynamic_Array *arr, int val) {
     if (arr->size == arr->capacity) {
-        int new_capacity = arr->capacity * 2;
-        int *newPArr = (int *) malloc(sizeof(int) * arr->capacity);
-        memcpy(newPArr, arr->pAddr, sizeof(int) * arr->capacity);
-        free(arr->pAddr);
-
-        arr->pAddr = newPArr;
-        arr->capacity = new_capacity;
+        Reloc_Dynamic_Array(arr, arr->capacity * 2);
     }
     arr->pAddr[arr->size] = val;
     arr->size++;
+}
 
+//删除尾部并返回它（未测试）
+int Pop_Tail_Dynamic_Array(Dynamic_Array *arr) {
+    return arr->pAddr[(arr->size--) - 1];
 }
 
 //打印
@@ -60,6 +74,7 @@ void Pop_Dynamic_Array(Dynamic_Array *arr, int idx) {
 int Get_Dynamic_Array(Dynamic_Array *arr, int idx) {
     return arr->pAddr[idx];
 }
+
 //赋值
 void Set_Dynamic_Array(Dynamic_Array *arr, int idx, int val) {
     arr->pAddr[idx] = val;
@@ -74,6 +89,7 @@ int Find_Dynamic_Array(Dynamic_Array *arr, int val) {
     }
     return -1;
 }
+
 
 //释放空间
 void Free_Dynamic_Array(Dynamic_Array *arr) {
