@@ -22,7 +22,7 @@ int test_LinkList(void) {
 
 
     //创建链表
-    LinkedList *list = LinkedListP_New();
+    LinkedListP *list = LinkedListP_New();
 
     //创建数据
 

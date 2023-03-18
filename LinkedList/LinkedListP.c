@@ -1,9 +1,9 @@
 #include"LinkedListP.h"
 
 //初始化链表
-LinkedList *LinkedListP_New() {
+LinkedListP *LinkedListP_New() {
 
-    LinkedList *pLinklist = (LinkedList *) malloc(sizeof(LinkedList));
+    LinkedListP *pLinklist = (LinkedListP *) malloc(sizeof(LinkedListP));
     pLinklist->size = 0;
 
     //头结点 不保存数据信息
@@ -15,7 +15,7 @@ LinkedList *LinkedListP_New() {
 }
 
 //指定位置插入
-void LinkedListP_Insert(LinkedList *list, int idx, void *data) {
+void LinkedListP_Insert(LinkedListP *list, int idx, void *data) {
 
     if (list == NULL) {
         return;
@@ -50,7 +50,7 @@ void LinkedListP_Insert(LinkedList *list, int idx, void *data) {
 
 
 //删除指定位置的值
-void LinkedListP_DelByIdx(LinkedList *list, int idx) {
+void LinkedListP_DelByIdx(LinkedListP *list, int idx) {
     if (list == NULL) {
         return;
     }
@@ -75,12 +75,12 @@ void LinkedListP_DelByIdx(LinkedList *list, int idx) {
 }
 
 //获得链表的长度
-int LinkedListP_Size(LinkedList *list) {
+int LinkedListP_Size(LinkedListP *list) {
     return list->size;
 }
 
 //查找
-int LinkedListP_Find(LinkedList *list, void *data) {
+int LinkedListP_Find(LinkedListP *list, void *data) {
     if (list == NULL) {
         return -1;
     }
@@ -104,12 +104,12 @@ int LinkedListP_Find(LinkedList *list, void *data) {
 }
 
 //返回第一个结点
-void *LinkedListP_GetFront(LinkedList *list) {
+void *LinkedListP_GetFront(LinkedListP *list) {
     return list->head->next->data;
 }
 
 //打印链表结点
-void Print_LinkList(LinkedList *list, PRINTLINKNODE print) {
+void Print_LinkList(LinkedListP *list, PRINTLINKNODE print) {
     if (list == NULL) {
         return;
     }
@@ -123,7 +123,7 @@ void Print_LinkList(LinkedList *list, PRINTLINKNODE print) {
 }
 
 //释放链表内存
-void LinkedListP_Free(LinkedList *list) {
+void LinkedListP_Free(LinkedListP *list) {
 
     if (list == NULL) {
         return;

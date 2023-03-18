@@ -6,7 +6,7 @@
 
 //链表结点
 typedef struct LINKED_NODE {
-    int val;  //指向任何类型的数据
+    int val;
     struct LINKED_NODE *next;
 } LinkedNode;
 

@@ -108,8 +108,9 @@ int LinkedList_Find(LinkedList *obj, int val) {
 void LinkedListFree(LinkedList *obj) {
     LinkedNode *p = obj->head;
     while (p) {
-        LinkedNode *p_next = p->next;
-        free(p);
-        p = p_next;
+        LinkedNode *tmp = p;
+        p = p->next;
+        free(tmp);
     }
+    free(obj);
 }

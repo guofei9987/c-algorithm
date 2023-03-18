@@ -25,6 +25,8 @@ int test_Hash() {
     DynamicArray *dynamicArray = HashSet2Array(hashSet);
     DynamicArray_Print(dynamicArray);
 
+    HashMap_Free(hashSet);
+    DynamicArray_Free(dynamicArray);
     return 0;
 }
 
