@@ -1,13 +1,13 @@
 #include"LinkedListP.h"
 
 //初始化链表
-LinkList *Init_LinkList() {
+LinkedList *LinkedListP_New() {
 
-    LinkList *pLinklist = (LinkList *) malloc(sizeof(LinkList));
+    LinkedList *pLinklist = (LinkedList *) malloc(sizeof(LinkedList));
     pLinklist->size = 0;
 
     //头结点 不保存数据信息
-    pLinklist->head = (LinkNode *) malloc(sizeof(LinkNode));
+    pLinklist->head = (LinkedNodeP *) malloc(sizeof(LinkedNodeP));
     pLinklist->head->data = NULL;
     pLinklist->head->next = NULL;
 
@@ -15,7 +15,7 @@ LinkList *Init_LinkList() {
 }
 
 //指定位置插入
-void Insert_LinkList(LinkList *list, int pos, void *data) {
+void LinkedListP_Insert(LinkedList *list, int idx, void *data) {
 
     if (list == NULL) {
         return;
@@ -24,19 +24,19 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
         return;
     }
 
-    if (pos < 0 || pos > list->size) {
-        pos = list->size;
+    if (idx < 0 || idx > list->size) {
+        idx = list->size;
     }
 
     //创建新的结点
-    LinkNode *newnode = (LinkNode *) malloc(sizeof(LinkNode));
+    LinkedNodeP *newnode = (LinkedNodeP *) malloc(sizeof(LinkedNodeP));
     newnode->data = data;
     newnode->next = NULL;
 
     //找结点
     //辅助指针变量
-    LinkNode *pCurrent = list->head;
-    for (int i = 0; i < pos; i++) {
+    LinkedNodeP *pCurrent = list->head;
+    for (int i = 0; i < idx; i++) {
         pCurrent = pCurrent->next;
     }
 
@@ -50,23 +50,23 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 
 
 //删除指定位置的值
-void RemoveByPos_LinkList(LinkList *list, int pos) {
+void LinkedListP_DelByIdx(LinkedList *list, int idx) {
     if (list == NULL) {
         return;
     }
 
-    if (pos < 0 || pos >= list->size) {
+    if (idx < 0 || idx >= list->size) {
         return;
     }
 
     //查找删除结点的前一个结点
-    LinkNode *pCurrent = list->head;
-    for (int i = 0; i < pos; i++) {
+    LinkedNodeP *pCurrent = list->head;
+    for (int i = 0; i < idx; i++) {
         pCurrent = pCurrent->next;
     }
 
     //缓存删除的结点
-    LinkNode *pDel = pCurrent->next;
+    LinkedNodeP *pDel = pCurrent->next;
     pCurrent->next = pDel->next;
     //释放删除结点的内存
     free(pDel);
@@ -75,12 +75,12 @@ void RemoveByPos_LinkList(LinkList *list, int pos) {
 }
 
 //获得链表的长度
-int Size_LinkList(LinkList *list) {
+int LinkedListP_Size(LinkedList *list) {
     return list->size;
 }
 
 //查找
-int Find_LinkList(LinkList *list, void *data) {
+int LinkedListP_Find(LinkedList *list, void *data) {
     if (list == NULL) {
         return -1;
     }
@@ -90,7 +90,7 @@ int Find_LinkList(LinkList *list, void *data) {
     }
 
     //遍历查找
-    LinkNode *pCurrent = list->head->next;
+    LinkedNodeP *pCurrent = list->head->next;
     int i = 0;
     while (pCurrent != NULL) {
         if (pCurrent->data == data) {
@@ -104,17 +104,17 @@ int Find_LinkList(LinkList *list, void *data) {
 }
 
 //返回第一个结点
-void *Front_LinkList(LinkList *list) {
+void *LinkedListP_GetFront(LinkedList *list) {
     return list->head->next->data;
 }
 
 //打印链表结点
-void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
+void Print_LinkList(LinkedList *list, PRINTLINKNODE print) {
     if (list == NULL) {
         return;
     }
     //辅助指针变量
-    LinkNode *pCurrent = list->head->next;
+    LinkedNodeP *pCurrent = list->head->next;
     while (pCurrent != NULL) {
         print(pCurrent->data);
         pCurrent = pCurrent->next;
@@ -123,17 +123,17 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
 }
 
 //释放链表内存
-void FreeSpace_LinkList(LinkList *list) {
+void LinkedListP_Free(LinkedList *list) {
 
     if (list == NULL) {
         return;
     }
 
     //辅助指针变量
-    LinkNode *pCurrent = list->head;
+    LinkedNodeP *pCurrent = list->head;
     while (pCurrent != NULL) {
         //缓存下一个结点
-        LinkNode *pNext = pCurrent->next;
+        LinkedNodeP *pNext = pCurrent->next;
         free(pCurrent);
         pCurrent = pNext;
     }

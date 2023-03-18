@@ -22,7 +22,7 @@ int test_LinkList(void) {
 
 
     //创建链表
-    LinkList *list = Init_LinkList();
+    LinkedList *list = LinkedListP_New();
 
     //创建数据
 
@@ -34,14 +34,14 @@ int test_LinkList(void) {
 
 
     for (int i = 0; i < sizeof(p) / sizeof(Person); i++) {
-        Insert_LinkList(list, 0, p + i);
+        LinkedListP_Insert(list, 0, p + i);
     }
 
     //打印
     Print_LinkList(list, MyPrint);
 
     //删除3
-    RemoveByPos_LinkList(list, 3);
+    LinkedListP_DelByIdx(list, 3);
 
     //打印
     printf("---------------\n");
@@ -49,11 +49,11 @@ int test_LinkList(void) {
 
     //返回第一个结点
     printf("-----查找结果------------\n");
-    Person *ret = (Person *) Front_LinkList(list);
+    Person *ret = (Person *) LinkedListP_GetFront(list);
     printf("Name:%s Age:%d Score:%d\n", ret->name, ret->age, ret->score);
 
     //销毁链表
-    FreeSpace_LinkList(list);
+    LinkedListP_Free(list);
 
     printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;
