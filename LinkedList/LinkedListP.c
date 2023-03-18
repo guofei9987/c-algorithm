@@ -1,17 +1,17 @@
-#include"LinkList.h"
+#include"LinkedListP.h"
 
 //初始化链表
 LinkList *Init_LinkList() {
 
-    LinkList *list = (LinkList *) malloc(sizeof(LinkList));
-    list->size = 0;
+    LinkList *pLinklist = (LinkList *) malloc(sizeof(LinkList));
+    pLinklist->size = 0;
 
     //头结点 不保存数据信息
-    list->head = (LinkNode *) malloc(sizeof(LinkNode));
-    list->head->data = NULL;
-    list->head->next = NULL;
+    pLinklist->head = (LinkNode *) malloc(sizeof(LinkNode));
+    pLinklist->head->data = NULL;
+    pLinklist->head->next = NULL;
 
-    return list;
+    return pLinklist;
 }
 
 //指定位置插入

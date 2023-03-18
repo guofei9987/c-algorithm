@@ -7,7 +7,7 @@
 #include "tests/Test_RecurrentArray.h"
 #include "tests/Test_LinkedList.h"
 #include "tests/Test_Hash.h"
-
+#include "tests/Test_LinkedListP.h"
 
 
 int main() {
@@ -20,9 +20,10 @@ int main() {
     tst_DynamicArrayP();
 
     test_LinkedList();
+    test_LinkList();
 
-     test_Hash();
 
+    test_Hash();
     return 0;
 }
 
