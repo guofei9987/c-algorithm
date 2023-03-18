@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.20)
 project(c_algorithm C)
 
@@ -22,9 +23,12 @@ add_executable(c_algorithm
         DynamicArray/convertor.h
         LinkedList/LinkedList.c
         LinkedList/LinkedList.h
-        LinkedList/old/Test_LinkList.c
+        LinkedList/LinkedListP.c
+        LinkedList/LinkedListP.h
         Hash/Hash.c
         Hash/Hash.h
+        Hash/HashTable.c
+        Hash/HashTable.h
         tests/Test_DynamicArrayP.c
         tests/Test_DynamicArray.c
         tests/Test_RecurrentArray.c
@@ -32,8 +36,12 @@ add_executable(c_algorithm
         tests/Test_LinkedList.h
         tests/Test_Hash.c
         tests/Test_Hash.h
+        tests/Test_LinkedListP.c
+        tests/Test_LinkedListP.h
+        tests/Test_HashTable.c
+        tests/Test_HashTable.h
         #        String/AC_KMP.c
-#        String/AC_KMP.h
+        #        String/AC_KMP.h
         kmp.c
         )
 

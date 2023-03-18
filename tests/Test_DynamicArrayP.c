@@ -2,6 +2,7 @@
 
 #include "DynamicArrayP.h"
 #include "Test_DynamicArrayP.h"
+#include "assert.h"
 
 typedef struct PERSON {
     char name[64];
@@ -17,7 +18,7 @@ void My_Print_P(Person *data) {
 int tst_DynamicArrayP() {
     printf("======测试 %s ======\n", __FILE_NAME__);
 
-    Dynamic_Array_P *dynamicArray = Init_Dynamic_Array_P();
+    DynamicArrayP *dynamicArray = DynamicArrayP_Init();
 
     Person p[] = {{"a", 1},
                   {"b", 2},
@@ -27,41 +28,43 @@ int tst_DynamicArrayP() {
     };
 
     for (int i = 0; i < sizeof(p) / sizeof(Person); i++) {
-        Push_Last_Dynamic_Array_P(dynamicArray, &p[i]);
+        DynamicArrayP_PushTail(dynamicArray, &p[i]);
     }
-    Print_Dynamic_Array_P(dynamicArray, (void *) My_Print_P);
+    DynamicArrayP_Print(dynamicArray, (void *) My_Print_P);
 
+    assert(((Person *)DynamicArrayP_GetByIdx(dynamicArray, 4))->age == 5);
 
-    printf("\npush idx = 2:\n");
     Person p_tmp = {"f", 9};
-    Push_Dynamic_Array_P(dynamicArray, 2, &p_tmp);
-    Print_Dynamic_Array_P(dynamicArray, (void *) My_Print_P);
+    DynamicArrayP_Push(dynamicArray, 2, &p_tmp);
+
+    assert(((Person *)DynamicArrayP_GetByIdx(dynamicArray, 2))->age == 9);
+    assert(dynamicArray->size == 6);
 
 
-    printf("\ndelete idx = 3:\n");
-    Pop_Dynamic_Array_P(dynamicArray, 3);
-    Print_Dynamic_Array_P(dynamicArray, (void *) My_Print_P);
+    DynamicArrayP_Pop(dynamicArray, 3);
+    assert(((Person *) DynamicArrayP_GetByIdx(dynamicArray, 3))->age == 4);
 
-    printf("delete tail:\n");
-    Pop_Last_Dynamic_Array_P(dynamicArray);
-    Print_Dynamic_Array_P(dynamicArray, (void *) My_Print_P);
+    DynamicArrayP_Print(dynamicArray, (void *) My_Print_P);
 
 
-    printf("\nfind idx by data:\n");
-    int idx_find = Find_Dynamic_Array_P(dynamicArray, &p[1]);
-    printf("result is idx=%d:\n", idx_find);
+    DynamicArrayP_PopTail(dynamicArray);
+    assert(dynamicArray->size == 4);
 
-    printf("\nget data by idx=2:\n");
-    Person *p_find = Get_Dynamic_Array_P(dynamicArray, 2);
-    My_Print_P(p_find);
-    printf("\n");
 
-    Set_Dynamic_Array_P(dynamicArray, 2, &p[4]);
-    Print_Dynamic_Array_P(dynamicArray, (void *) My_Print_P);
+    int idx_find = DynamicArrayP_Find(dynamicArray, &p[1]);
+    assert(idx_find == 1);
+
+
+    Person *p_find = DynamicArrayP_GetByIdx(dynamicArray, 2);
+    assert(p_find->age == 9);
+
+    DynamicArrayP_SetByIdx(dynamicArray, 2, &p[4]);
+    DynamicArrayP_Print(dynamicArray, (void *) My_Print_P);
+    assert(((Person *)DynamicArrayP_GetByIdx(dynamicArray, 2))->age==5);
 
 
 // 释放空间
-    Free_Dynamic_Array_P(dynamicArray);
+    DynamicArrayP_Free(dynamicArray);
 
     printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;
