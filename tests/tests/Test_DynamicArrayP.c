@@ -2,7 +2,7 @@
 
 #include "DynamicArrayP.h"
 #include "Test_DynamicArrayP.h"
-#include "assert.h"
+#include <assert.h>
 
 typedef struct PERSON {
     char name[64];
