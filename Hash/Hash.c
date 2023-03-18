@@ -65,7 +65,7 @@ void HashSet_del(HashSet *obj, int key) {
 
 
 void HashSet2Array(HashSet *obj) {
-    Dynamic_Array *dynamicArray = Init_Dynamic_Array(30);
+    DynamicArray *dynamicArray = DynamicArray_Init(30);
 
 //    Push_Dynamic_Array(dynamicArray,)
 

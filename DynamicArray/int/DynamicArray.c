@@ -1,8 +1,8 @@
 #include "DynamicArray.h"
 
 //初始化
-Dynamic_Array *Init_Dynamic_Array(int capacity) {
-    Dynamic_Array *arr = (Dynamic_Array *) malloc(sizeof(Dynamic_Array));
+DynamicArray *DynamicArray_Init(int capacity) {
+    DynamicArray *arr = (DynamicArray *) malloc(sizeof(DynamicArray));
     arr->capacity = capacity;
     arr->size = 0;
     arr->pAddr = (int *) malloc(sizeof(int) * arr->capacity);
@@ -10,7 +10,7 @@ Dynamic_Array *Init_Dynamic_Array(int capacity) {
 }
 
 //重新分配内存
-void Reloc_Dynamic_Array(Dynamic_Array *arr, int new_capacity) {
+void DynamicArray_Reloc(DynamicArray *arr, int new_capacity) {
 //    assert(new_capacity>arr->size)
     int *newPArr = (int *) malloc(sizeof(int) * arr->capacity);
     memcpy(newPArr, arr->pAddr, sizeof(int) * arr->size);
@@ -20,31 +20,31 @@ void Reloc_Dynamic_Array(Dynamic_Array *arr, int new_capacity) {
 }
 
 // 减少内存消耗
-void Lose_Weight_Dynamic_Array(Dynamic_Array *arr) {
+void DynamicArray_LoseWeight(DynamicArray *arr) {
     if (arr->size == 0) {
-        Reloc_Dynamic_Array(arr, 1);
+        DynamicArray_Reloc(arr, 1);
     } else {
-        Reloc_Dynamic_Array(arr, arr->size);
+        DynamicArray_Reloc(arr, arr->size);
     }
 }
 
 
 //尾部插入
-void Push_Dynamic_Array(Dynamic_Array *arr, int val) {
+void DynamicArray_Push(DynamicArray *arr, int val) {
     if (arr->size == arr->capacity) {
-        Reloc_Dynamic_Array(arr, arr->capacity * 2);
+        DynamicArray_Reloc(arr, arr->capacity * 2);
     }
     arr->pAddr[arr->size] = val;
     arr->size++;
 }
 
 //删除尾部并返回它（未测试）
-int Pop_Tail_Dynamic_Array(Dynamic_Array *arr) {
+int DynamicArray_Pop_Tail(DynamicArray *arr) {
     return arr->pAddr[(arr->size--) - 1];
 }
 
 //打印
-void Print_Dynamic_Array(Dynamic_Array *arr) {
+void DynamicArray_Print(DynamicArray *arr) {
     if (arr == NULL) {
         return;
     }
@@ -54,8 +54,8 @@ void Print_Dynamic_Array(Dynamic_Array *arr) {
     printf("\n");
 }
 
-//删除一个
-void Pop_Dynamic_Array(Dynamic_Array *arr, int idx) {
+//删除最后一个
+void DynamicArray_Pop(DynamicArray *arr, int idx) {
     if (arr == NULL) {
         return;
     }
@@ -71,17 +71,17 @@ void Pop_Dynamic_Array(Dynamic_Array *arr, int idx) {
 }
 
 //取一个
-int Get_Dynamic_Array(Dynamic_Array *arr, int idx) {
+int DynamicArray_Get(DynamicArray *arr, int idx) {
     return arr->pAddr[idx];
 }
 
 //赋值
-void Set_Dynamic_Array(Dynamic_Array *arr, int idx, int val) {
+void DynamicArray_Set(DynamicArray *arr, int idx, int val) {
     arr->pAddr[idx] = val;
 }
 
 //查找
-int Find_Dynamic_Array(Dynamic_Array *arr, int val) {
+int DynamicArray_Find(DynamicArray *arr, int val) {
     for (int i = 0; i < arr->size; i++) {
         if (arr->pAddr[i] == val) {
             return i;
@@ -92,7 +92,7 @@ int Find_Dynamic_Array(Dynamic_Array *arr, int val) {
 
 
 //释放空间
-void Free_Dynamic_Array(Dynamic_Array *arr) {
+void DynamicArray_Free(DynamicArray *arr) {
     if (arr == NULL) {
         return;
     }
