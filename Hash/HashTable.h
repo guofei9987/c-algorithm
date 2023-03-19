@@ -12,13 +12,13 @@ typedef struct HashTable {
     LinkedListP **linkedListP;
     int num_buckets;
 
-    int (*cmp)(const void *key1, const void *key2);
+    int (*cmp)(const void *data1, const void *data2);
 
     unsigned (*hash)(const void *key);
 } HashTable;
 
 
-HashTable *HashTable_Init(int num_bucket);
+HashTable *HashTable_Init(int num_bucket, unsigned hash(const void *key), int cmp(const void *key1, const void *key2));
 
 //向HashTable中塞入数据
 void HashTable_Add(HashTable *obj, void *key, void *val);

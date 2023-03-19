@@ -26,6 +26,7 @@ int main() {
     test_Hash();
 
     test_HashTable();
+     test_HashTable_int();
     return 0;
 }
 

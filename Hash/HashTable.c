@@ -1,21 +1,16 @@
 #include "HashTable.h"
 #include <string.h>
 
-static int cmp(const void *key1, const void *key2) {
-    return !strcmp(key1, key2);
-}
+//TODO：不会：
+//接收 "比较key的函数"(函数指针)，返回 "比较KV的函数"（函数指针）
+//做这个转化是为了复用 LinkedListP，而它对应的 cmp 函数指针，其输入是整个data
 
-static int cmp_KV(const void *data1, const void *data2) {
-    return cmp(
-            ((KV *) data1)->key,
-            ((KV *) data2)->key);
-}
 
-static unsigned hash(const void *key) {
-    return (unsigned long) key >> 2;
-}
 
-HashTable *HashTable_Init(int num_buckets) {
+HashTable *HashTable_Init(int num_buckets,
+                          unsigned hash(const void *key),
+                          int cmp(const void *data1, const void *data2)
+) {
     HashTable *hashTable = malloc(sizeof(HashTable));
     hashTable->linkedListP = malloc(num_buckets * sizeof(LinkedListP));
     hashTable->cmp = cmp;
@@ -42,14 +37,14 @@ void HashTable_Add(HashTable *obj, void *key, void *val) {
 //删除数据
 void HashTable_Del(HashTable *obj, void *key) {
     KV tmp = {key, NULL};
-    LinkedListP_DelByVal(obj->linkedListP[obj->hash(key) % obj->num_buckets], &tmp, cmp_KV);
+    LinkedListP_DelByVal(obj->linkedListP[obj->hash(key) % obj->num_buckets], &tmp, obj->cmp);
 }
 
 
 //根据 key，返回 val
 void *HashTable_Get(HashTable *obj, void *key) {
     KV tmp = {key, NULL};
-    LinkedNodeP *p = LinkedListP_Find2(obj->linkedListP[obj->hash(key) % obj->num_buckets], &tmp, cmp_KV);
+    LinkedNodeP *p = LinkedListP_Find2(obj->linkedListP[obj->hash(key) % obj->num_buckets], &tmp, obj->cmp);
     if (p == NULL) {
         return NULL;
     }
