@@ -18,7 +18,7 @@ typedef void (*PRINT_DATA)(void *);
 typedef int (*COMPARE_DATA)(void *, void *);
 
 //初始化
-DynamicArrayP *DynamicArrayP_Init();
+DynamicArrayP *DynamicArrayP_Init(int capacity);
 
 //打印
 void DynamicArrayP_Print(DynamicArrayP *arr, PRINT_DATA printData);
@@ -38,7 +38,7 @@ void DynamicArrayP_PushTail(DynamicArrayP *arr, void *data);
 void DynamicArrayP_PopTail(DynamicArrayP *arr);
 
 
-int DynamicArrayP_Find(DynamicArrayP *arr, void *data);
+int DynamicArrayP_Find(DynamicArrayP *arr, void *data, COMPARE_DATA compareData);
 
 void *DynamicArrayP_GetByIdx(DynamicArrayP *arr, int idx);
 
@@ -46,8 +46,5 @@ void DynamicArrayP_SetByIdx(DynamicArrayP *arr, int idx, void *data);
 
 // 释放空间
 void DynamicArrayP_Free(DynamicArrayP *arr);
-
-//TODO:释放所指向的数据
-
 
 #endif //DYNAMIC_ARRAY_P_H

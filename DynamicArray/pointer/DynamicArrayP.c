@@ -1,9 +1,9 @@
 #include "DynamicArrayP.h"
 
 //初始化
-DynamicArrayP *DynamicArrayP_Init() {
+DynamicArrayP *DynamicArrayP_Init(int capacity) {
     DynamicArrayP *arr = (DynamicArrayP *) malloc(sizeof(DynamicArrayP));
-    arr->capacity = 50;
+    arr->capacity = capacity;
     arr->size = 0;
     arr->pAddr = (void *) malloc(sizeof(void *) * arr->capacity);
     return arr;
@@ -58,14 +58,13 @@ void DynamicArrayP_Print(DynamicArrayP *arr, PRINT_DATA printData) {
         return;
     }
     for (int i = 0; i < arr->size; i++) {
-//        printf("%p,", *(arr->pAddr)[i]);
         printData(arr->pAddr[i]);
     }
     printf("\n");
 }
 
 //删除一个
-//TODO:被删除的内存需要释放吗？
+// 被删除的 void *data 对应的内存不在这里释放，因为它不是 DynamicArray_Init 申请的
 void DynamicArrayP_Pop(DynamicArrayP *arr, int idx) {
     if (arr == NULL) {
         return;
@@ -94,15 +93,17 @@ void DynamicArrayP_SetByIdx(DynamicArrayP *arr, int idx, void *data) {
     arr->pAddr[idx] = data;
 }
 
-//查找
-int DynamicArrayP_Find(DynamicArrayP *arr, void *data) {
+
+//查找，使用传入的 COMPARE_DATA 函数指针
+int DynamicArrayP_Find(DynamicArrayP *arr, void *data, COMPARE_DATA compareData) {
     for (int i = 0; i < arr->size; i++) {
-        if (arr->pAddr[i] == data) {
+        if (compareData(arr->pAddr[i], data)) {
             return i;
         }
     }
     return -1;
 }
+
 
 
 //从最后删除
@@ -112,6 +113,7 @@ void DynamicArrayP_PopTail(DynamicArrayP *arr) {
 
 
 //释放空间
+//不释放void * 指向的数据，因为它不是在 DynamicArrayP 中分配的内存
 void DynamicArrayP_Free(DynamicArrayP *arr) {
     if (arr == NULL) {
         return;

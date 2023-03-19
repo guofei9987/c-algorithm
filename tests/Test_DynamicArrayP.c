@@ -10,15 +10,21 @@ typedef struct PERSON {
 } Person;
 
 
-void My_Print_P(Person *data) {
+static void My_Print_P(Person *data) {
     printf("[name=%s,age=%d];", data->name, data->age);
+}
+
+static int My_COMPARE_DATA(void *data1, void *data2) {
+    Person *data1_ = (Person *) data1;
+    Person *data2_ = (Person *) data2;
+    return (data1_->age == data2_->age) && (!strcmp(data1_->name, data2_->name));
 }
 
 
 int tst_DynamicArrayP() {
     printf("======测试 %s ======\n", __FILE_NAME__);
 
-    DynamicArrayP *dynamicArray = DynamicArrayP_Init();
+    DynamicArrayP *dynamicArray = DynamicArrayP_Init(50);
 
     Person p[] = {{"a", 1},
                   {"b", 2},
@@ -32,12 +38,12 @@ int tst_DynamicArrayP() {
     }
     DynamicArrayP_Print(dynamicArray, (void *) My_Print_P);
 
-    assert(((Person *)DynamicArrayP_GetByIdx(dynamicArray, 4))->age == 5);
+    assert(((Person *) DynamicArrayP_GetByIdx(dynamicArray, 4))->age == 5);
 
     Person p_tmp = {"f", 9};
     DynamicArrayP_Push(dynamicArray, 2, &p_tmp);
 
-    assert(((Person *)DynamicArrayP_GetByIdx(dynamicArray, 2))->age == 9);
+    assert(((Person *) DynamicArrayP_GetByIdx(dynamicArray, 2))->age == 9);
     assert(dynamicArray->size == 6);
 
 
@@ -51,7 +57,12 @@ int tst_DynamicArrayP() {
     assert(dynamicArray->size == 4);
 
 
-    int idx_find = DynamicArrayP_Find(dynamicArray, &p[1]);
+    int idx_find = DynamicArrayP_Find(dynamicArray, &p[1], My_COMPARE_DATA);
+    assert(idx_find == 1);
+
+//    比较：内存相同
+    Person new_person = {"b", 2};
+    idx_find = DynamicArrayP_Find(dynamicArray, &new_person, My_COMPARE_DATA);
     assert(idx_find == 1);
 
 
@@ -60,7 +71,7 @@ int tst_DynamicArrayP() {
 
     DynamicArrayP_SetByIdx(dynamicArray, 2, &p[4]);
     DynamicArrayP_Print(dynamicArray, (void *) My_Print_P);
-    assert(((Person *)DynamicArrayP_GetByIdx(dynamicArray, 2))->age==5);
+    assert(((Person *) DynamicArrayP_GetByIdx(dynamicArray, 2))->age == 5);
 
 
 // 释放空间
