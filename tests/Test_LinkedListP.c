@@ -17,12 +17,18 @@ void MyPrint(void *data) {
     printf("<Name:%s Age:%d Score:%d>\n", p->name, p->age, p->score);
 }
 
+//比较指针是否相同
+static int MyCmp(const void *data1,const void *data2){
+    return data1==data2;
+}
+
+
 int test_LinkList(void) {
     printf("======测试 %s ======\n", __FILE_NAME__);
 
 
     //创建链表
-    LinkedListP *list = LinkedListP_New();
+    LinkedListP *linkedListP = LinkedListP_New();
 
     //创建数据
 
@@ -34,26 +40,26 @@ int test_LinkList(void) {
 
 
     for (int i = 0; i < sizeof(p) / sizeof(Person); i++) {
-        LinkedListP_Insert(list, 0, p + i);
+        LinkedListP_Insert(linkedListP, 0, p + i);
     }
 
     //打印
-    Print_LinkList(list, MyPrint);
+    Print_LinkList(linkedListP, MyPrint);
 
     //删除3
-    LinkedListP_DelByIdx(list, 3);
+    LinkedListP_DelByIdx(linkedListP, 3);
 
     //打印
     printf("---------------\n");
-    Print_LinkList(list, MyPrint);
+    Print_LinkList(linkedListP, MyPrint);
 
     //返回第一个结点
     printf("-----查找结果------------\n");
-    Person *ret = (Person *) LinkedListP_GetFront(list);
+    Person *ret = (Person *) LinkedListP_GetFront(linkedListP);
     printf("Name:%s Age:%d Score:%d\n", ret->name, ret->age, ret->score);
 
     //销毁链表
-    LinkedListP_Free(list);
+    LinkedListP_Free(linkedListP);
 
     printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;

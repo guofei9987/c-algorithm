@@ -8,7 +8,7 @@
 #include "tests/Test_LinkedList.h"
 #include "tests/Test_Hash.h"
 #include "tests/Test_LinkedListP.h"
-
+#include "tests//Test_HashTable.h"
 
 int main() {
 
@@ -24,6 +24,8 @@ int main() {
 
 
     test_Hash();
+
+    test_HashTable();
     return 0;
 }
 

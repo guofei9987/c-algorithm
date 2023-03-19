@@ -14,8 +14,8 @@ typedef struct DYNAMIC_ARRAY_P {
 //函数指针-打印一个节点
 typedef void (*PRINT_DATA)(void *);
 
-//函数指针-比较两个节点
-typedef int (*COMPARE_DATA)(void *, void *);
+//函数指针-比较两个节点，不同返回0
+typedef int (*COMPARE_DATA)(const void *, const void *);
 
 //初始化
 DynamicArrayP *DynamicArrayP_Init(int capacity);

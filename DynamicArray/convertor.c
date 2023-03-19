@@ -1,7 +1,9 @@
 //各种数据类型之间的相互转换
-
 #include "convertor.h"
+#include "DynamicArrayP.h"
+#include "DynamicArray.h"
 #include "Hash.h"
+#include "HashTable.h"
 
 DynamicArray *LinkedList2DynamicArray(LinkedList *linkedList) {
     DynamicArray *dynamicArray = DynamicArray_Init(30);
@@ -24,4 +26,19 @@ DynamicArray *HashSet2Array(HashSet *obj) {
         }
     }
     return dynamicArray;
+}
+
+
+DynamicArrayP *HashTable2ArrayP(HashTable *obj) {
+    DynamicArrayP *dynamicArrayP=DynamicArrayP_Init(50);
+
+    for (int i = 0; i < obj->num_buckets; i++) {
+        LinkedNodeP *p = obj->linkedListP[i]->head;
+        while (p->next) {
+            DynamicArrayP_PushTail(dynamicArrayP, p->next->data);
+            p = p->next;
+        }
+    }
+    return dynamicArrayP;
+
 }

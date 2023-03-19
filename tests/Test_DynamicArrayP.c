@@ -14,7 +14,7 @@ static void My_Print_P(Person *data) {
     printf("[name=%s,age=%d];", data->name, data->age);
 }
 
-static int My_COMPARE_DATA(void *data1, void *data2) {
+static int My_COMPARE_DATA(const void *data1, const void *data2) {
     Person *data1_ = (Person *) data1;
     Person *data2_ = (Person *) data2;
     return (data1_->age == data2_->age) && (!strcmp(data1_->name, data2_->name));

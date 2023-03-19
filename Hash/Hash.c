@@ -55,7 +55,6 @@ void HashMap_Add(HashSet *obj, int key) {
     if (LinkedList_Find(tmp, key) == -1) {
         LinkedListAddAtHead(tmp, key);
     }
-
 }
 
 int HashMap_Has(HashSet *obj, int key) {
@@ -68,3 +67,11 @@ void HashSet_del(HashSet *obj, int key) {
 }
 
 
+
+void HashMap_Free(HashSet *obj) {
+    for (int i = 0; i < obj->num_bucket; i++) {
+        LinkedListFree(obj->linkedList[i]);
+    }
+    free(obj->linkedList);
+    free(obj);
+}
