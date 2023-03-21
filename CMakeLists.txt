@@ -15,5 +15,3 @@ if (EXISTS /usr/local/lib/libc_algo.dylib OR EXISTS /usr/local/lib/libc_algo.so 
     enable_testing()
     add_test(NAME tests COMMAND c_algorithm_tests/c_algorithm_tests)
 endif ()
-
-
