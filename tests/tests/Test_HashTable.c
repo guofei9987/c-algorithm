@@ -8,7 +8,7 @@
 
 
 static void My_Print_P(void *data) {
-    printf("%s: %s ,", ((KV *) data)->key, ((KV *) data)->val);
+    printf("%s: %s ,", (char *)((KV *) data)->key, (char *)((KV *) data)->val);
 }
 
 //比较两个key是否相同
@@ -65,7 +65,7 @@ int test_HashTable() {
 
 static void My_Print_P2(void *data) {
     KV *kv = (KV *) data;
-    printf("%d: %s ,", *((int *) kv->key), kv->val);
+    printf("%d: %s ,", *((int *) kv->key), (char *)(kv->val));
 }
 
 //比较两个key是否相同
