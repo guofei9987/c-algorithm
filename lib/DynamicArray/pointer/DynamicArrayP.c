@@ -1,4 +1,5 @@
 #include "DynamicArrayP.h"
+#include <assert.h>
 
 //初始化
 DynamicArrayP *DynamicArrayP_Init(int capacity) {
@@ -12,37 +13,15 @@ DynamicArrayP *DynamicArrayP_Init(int capacity) {
 
 
 void DynamicArrayP_Push(DynamicArrayP *arr, int idx, void *data) {
-    if (arr == NULL) {
-        return;
-    }
-    if (idx < 0 || idx > arr->size) {
-        return;
-    }
-
-    void **oldPAddr = arr->pAddr;
     if (arr->size == arr->capacity) {
-        int new_capacity = arr->capacity * 2;
-        void **newPAddr = (void *) malloc(sizeof(void *) * arr->capacity);
-
-        for (int i = 0; i < idx; i++) {
-            newPAddr[i] = oldPAddr[i];
-        }
-        newPAddr[idx] = data;
-        for (int i = idx; i < arr->size; i++) {
-            newPAddr[i + 1] = oldPAddr[i];
-        }
-
-        free(arr->pAddr);
-
-        arr->pAddr = newPAddr;
-        arr->capacity = new_capacity;
+        DynamicArrayP_Reloc(arr, arr->capacity * 2);
     } else {
         for (int i = arr->size; i > idx; i--) {
-            oldPAddr[i] = oldPAddr[i - 1];
+            arr->pAddr[i] = arr->pAddr[i - 1];
         }
-        oldPAddr[idx] = data;
     }
 
+    arr->pAddr[idx] = data;
     arr->size++;
 }
 
@@ -105,10 +84,27 @@ int DynamicArrayP_Find(DynamicArrayP *arr, void *data, COMPARE_DATA compareData)
 }
 
 
-
 //从最后删除
 void DynamicArrayP_PopTail(DynamicArrayP *arr) {
     DynamicArrayP_Pop(arr, arr->size - 1);
+}
+
+
+void DynamicArrayP_Reloc(DynamicArrayP *arr, int new_capacity) {
+    assert(new_capacity > arr->size);
+    void **newPArr = (void **) malloc(sizeof(void *) * new_capacity);
+    memcpy(newPArr, arr->pAddr, sizeof(void *) * arr->size);
+    free(arr->pAddr);
+    arr->pAddr = newPArr;
+    arr->capacity = new_capacity;
+}
+
+void DynamicArrayP_LoseWeight(DynamicArrayP *arr) {
+    if (arr->size == 0) {
+        DynamicArrayP_Reloc(arr, 1);
+    } else {
+        DynamicArrayP_Reloc(arr, arr->size);
+    }
 }
 
 

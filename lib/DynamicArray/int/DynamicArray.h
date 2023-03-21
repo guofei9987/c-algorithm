@@ -20,7 +20,7 @@ DynamicArray *DynamicArray_Init(int capacity);
 void DynamicArray_Reloc(DynamicArray *arr, int new_capacity);
 
 // 减少内存消耗
-void DynamicArray_Lose_Weight(DynamicArray *arr);
+void DynamicArray_LoseWeight(DynamicArray *arr);
 
 
 //打印

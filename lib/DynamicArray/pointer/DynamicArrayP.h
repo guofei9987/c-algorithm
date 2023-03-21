@@ -44,6 +44,10 @@ void *DynamicArrayP_GetByIdx(DynamicArrayP *arr, int idx);
 
 void DynamicArrayP_SetByIdx(DynamicArrayP *arr, int idx, void *data);
 
+void DynamicArrayP_Reloc(DynamicArrayP *arr, int new_capacity);
+
+void DynamicArrayP_LoseWeight(DynamicArrayP *arr);
+
 // 释放空间
 void DynamicArrayP_Free(DynamicArrayP *arr);
 

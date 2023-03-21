@@ -55,7 +55,7 @@ void DynamicArray_Print(DynamicArray *arr) {
     printf("\n");
 }
 
-//删除最后一个
+//删除一个
 void DynamicArray_Pop(DynamicArray *arr, int idx) {
     if (arr == NULL) {
         return;

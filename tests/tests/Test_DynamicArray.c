@@ -22,6 +22,7 @@ int test_DynamicArray() {
 
 
     DynamicArray_Set(arr, 0, 30);
+    DynamicArray_LoseWeight(arr);
     DynamicArray_Print(arr);
 
     DynamicArray_Free(arr);
