@@ -30,7 +30,7 @@ static unsigned int hash(const void *key) {
 }
 
 int test_HashTable() {
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
 
     HashTable *hashTable = HashTable_Init(20, hash, cmp_KV);
     char *keys[] = {"hello", "world", "you", "good"};
@@ -57,7 +57,7 @@ int test_HashTable() {
 
 
     HashTable_Free(hashTable);
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
 
     return 0;
 }
