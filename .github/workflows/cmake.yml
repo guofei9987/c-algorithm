@@ -39,7 +39,7 @@ jobs:
 
       - name: CMake
         # Build your program with the given configuration
-        run: cmake --build ${{github.workspace}}/build
+        run: cmake -B ${{github.workspace}}/build
       - name: Build
         working-directory: ${{github.workspace}}/build
         # Build your program with the given configuration
