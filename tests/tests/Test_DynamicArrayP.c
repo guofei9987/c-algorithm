@@ -22,7 +22,7 @@ static int My_COMPARE_DATA(const void *data1, const void *data2) {
 
 
 int tst_DynamicArrayP() {
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
 
     DynamicArrayP *dynamicArray = DynamicArrayP_Init(50);
 
@@ -77,6 +77,6 @@ int tst_DynamicArrayP() {
 // 释放空间
     DynamicArrayP_Free(dynamicArray);
 
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;
 }

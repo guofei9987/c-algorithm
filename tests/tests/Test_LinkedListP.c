@@ -24,7 +24,7 @@ static int MyCmp(const void *data1,const void *data2){
 
 
 int test_LinkList(void) {
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
 
 
     //创建链表
@@ -61,6 +61,6 @@ int test_LinkList(void) {
     //销毁链表
     LinkedListP_Free(linkedListP);
 
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;
 }

@@ -4,7 +4,7 @@
 
 int test_Rec_Array() {
 
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
     Rec_Array *recArray = Init_REC_ARRAY(10);
 
     Push_Rec_Array(recArray, 1);
@@ -18,7 +18,7 @@ int test_Rec_Array() {
     Del_Front_Rec_Array(recArray);
     assert(Get_Front_Rec_Array(recArray) == 4);
 
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;
 }
 

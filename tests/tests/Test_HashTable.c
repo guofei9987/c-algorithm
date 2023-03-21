@@ -86,7 +86,7 @@ static unsigned int hash2(const void *key) {
 
 
 int test_HashTable_int() {
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
 
     HashTable *hashTable = HashTable_Init(20, hash2, cmp_KV2);
     int keys[] = {1, 2, 3, 4};
@@ -113,7 +113,7 @@ int test_HashTable_int() {
     assert(HashTable_Get(hashTable, &a) == NULL);
 
     HashTable_Free(hashTable);
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
 
     return 0;
 }

@@ -4,7 +4,7 @@
 
 
 int test_DynamicArray() {
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
 
     DynamicArray *arr = DynamicArray_Init(20);
 
@@ -25,7 +25,7 @@ int test_DynamicArray() {
     DynamicArray_Print(arr);
 
     DynamicArray_Free(arr);
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
     return 0;
 
 }

@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 int test_LinkedList() {
-    printf("======测试 %s ======\n", __FILE_NAME__);
+//    printf("======测试 %s ======\n", __FILE_NAME__);
 
     LinkedList *linkedList = LinkedList_Init();
     LinkedListAddAtHead(linkedList, 1);
@@ -27,7 +27,7 @@ int test_LinkedList() {
     LinkedListFree(linkedList);
 
 
-    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
 
     return 0;
 }
