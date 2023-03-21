@@ -1,5 +1,6 @@
 #include <assert.h>
-#include "DynamicArray.h"
+//#include "DynamicArray.h"
+#include "c_algo.h"
 #include "Test_DynamicArray.h"
 
 
