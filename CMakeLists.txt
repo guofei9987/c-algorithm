@@ -10,7 +10,10 @@ set(CMAKE_C_FLAGS "-O3")
 add_subdirectory(lib bin)
 
 # 测试
-#add_subdirectory(tests c_algorithm_tests)
-#enable_testing()
-#add_test(NAME tests COMMAND c_algorithm_tests/c_algorithm_tests)
+if (EXISTS /usr/local/lib/libc_algo.dylib)
+    add_subdirectory(tests c_algorithm_tests)
+    enable_testing()
+    add_test(NAME tests COMMAND c_algorithm_tests/c_algorithm_tests)
+endif ()
+
 
