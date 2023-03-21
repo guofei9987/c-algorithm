@@ -22,4 +22,10 @@ add_executable(c_algorithm_tests
 
 
 include_directories(/usr/local/include/c_algo)
-target_link_libraries(c_algorithm_tests /usr/local/lib/libc_algo.dylib)
+if (EXISTS /usr/local/lib/libc_algo.dylib)
+    target_link_libraries(c_algorithm_tests /usr/local/lib/libc_algo.dylib)
+endif ()
+
+if (EXISTS /usr/local/lib/libc_algo.so)
+    target_link_libraries(c_algorithm_tests /usr/local/lib/libc_algo.so)
+endif ()

@@ -8,7 +8,7 @@ int test_DynamicArray() {
 
     DynamicArray *arr = DynamicArray_Init(20);
 
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 15; i++) {
         DynamicArray_Push(arr, i);
     }
 

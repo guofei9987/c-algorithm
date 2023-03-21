@@ -12,7 +12,7 @@ DynamicArray *DynamicArray_Init(int capacity) {
 //重新分配内存
 void DynamicArray_Reloc(DynamicArray *arr, int new_capacity) {
 //    assert(new_capacity>arr->size)
-    int *newPArr = (int *) malloc(sizeof(int) * arr->capacity);
+    int *newPArr = (int *) malloc(sizeof(int) * new_capacity);
     memcpy(newPArr, arr->pAddr, sizeof(int) * arr->size);
     free(arr->pAddr);
     arr->pAddr = newPArr;
