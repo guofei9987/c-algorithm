@@ -8,7 +8,7 @@
 git clone git@github.com:guofei9987/c-algorithm.git
 cd c-algorithm/build
 cmake ..
-make install
+sudo make install
 ```
 
 ## 静态数组

@@ -11,6 +11,8 @@ include_directories(DynamicArray)
 include_directories(LinkedList)
 include_directories(Hash)
 
+MESSAGE(STATUS ${CMAKE_C_FLAGS})
+
 
 #add_executable(c_algorithm
 #        main.c
@@ -72,6 +74,10 @@ set(C_ALGO_SRC
         )
 
 add_library(c_algo SHARED ${C_ALGO_H} ${C_ALGO_SRC})
+add_library(c_algo_static STATIC ${C_ALGO_H} ${C_ALGO_SRC})
 
 INSTALL(FILES ${C_ALGO_H} DESTINATION include/c_algo)
+# 动态库
 INSTALL(TARGETS c_algo LIBRARY DESTINATION lib)
+#静态哭
+INSTALL(TARGETS c_algo_static ARCHIVE DESTINATION lib)
