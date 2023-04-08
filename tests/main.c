@@ -4,7 +4,6 @@
 
 #include "tests/Test_DynamicArray.h"
 #include "tests/Test_DynamicArrayP.h"
-#include "tests/Test_RecurrentArray.h"
 #include "tests/Test_LinkedList.h"
 #include "tests/Test_Hash.h"
 #include "tests/Test_LinkedListP.h"
@@ -29,7 +28,7 @@ int main() {
     test_HashTable();
     test_HashTable_int();
 
-    test_ac_dat();
+    test_AC_DAT();
     return 0;
 }
 

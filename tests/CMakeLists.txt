@@ -16,7 +16,6 @@ add_executable(c_algorithm_tests
         main.c
         tests/Test_DynamicArrayP.c
         tests/Test_DynamicArray.c
-        tests/Test_RecurrentArray.c
         tests/Test_LinkedList.c
         tests/Test_LinkedList.h
         tests/Test_Hash.c

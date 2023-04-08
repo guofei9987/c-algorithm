@@ -3,7 +3,7 @@
 #include "AC_DAT.h"
 #include "Test_String.h"
 
-int test_ac_dat() {
+int test_AC_DAT() {
 
     int num_keywords = 4;
     char **keywords = malloc(sizeof(char *) * num_keywords);
@@ -26,6 +26,7 @@ int test_ac_dat() {
 
     AC_DAT_Free(acDat);
 
+    printf("finished: test_ac_dat\n");
 
     return 0;
 }
