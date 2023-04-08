@@ -18,6 +18,7 @@ set(C_ALGO_H
         LinkedList/LinkedListP.h
         Hash/Hash.h
         Hash/HashTable.h
+        String/AC_DAT.h
         #        String/AC_KMP.c
         #        String/AC_KMP.h
         )
@@ -32,6 +33,7 @@ set(C_ALGO_SRC
         LinkedList/LinkedListP.c
         Hash/Hash.c
         Hash/HashTable.c
+        String/AC_DAT.c
         )
 
 add_library(c_algo SHARED ${C_ALGO_H} ${C_ALGO_SRC})

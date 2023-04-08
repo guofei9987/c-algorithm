@@ -5,10 +5,11 @@ project(c_algorithm_tests C)
 set(CMAKE_C_STANDARD 99)
 
 
-include_directories(../lib/DynamicArray)
-include_directories(../lib/DynamicArray/pointer)
-include_directories(../lib/LinkedList)
-include_directories(../lib/Hash)
+#include_directories(../lib/DynamicArray)
+#include_directories(../lib/DynamicArray/pointer)
+#include_directories(../lib/LinkedList)
+#include_directories(../lib/Hash)
+#include_directories(../lib/String)
 
 
 add_executable(c_algorithm_tests
@@ -24,6 +25,8 @@ add_executable(c_algorithm_tests
         tests/Test_LinkedListP.h
         tests/Test_HashTable.c
         tests/Test_HashTable.h
+        tests/Test_String.h
+        tests/Test_String.c
         )
 
 

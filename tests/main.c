@@ -9,6 +9,7 @@
 #include "tests/Test_Hash.h"
 #include "tests/Test_LinkedListP.h"
 #include "tests/Test_HashTable.h"
+#include "tests/Test_String.h"
 
 int main() {
 
@@ -27,8 +28,9 @@ int main() {
 
     test_HashTable();
     test_HashTable_int();
+
+    test_ac_dat();
     return 0;
 }
-
 
 
