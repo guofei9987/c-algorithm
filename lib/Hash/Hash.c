@@ -53,7 +53,7 @@ HashSet *HashSet_Init(int num_bucket) {
 void HashMap_Add(HashSet *obj, int key) {
     LinkedList *tmp = obj->linkedList[hash_int(key) % obj->num_bucket];
     if (LinkedList_Find(tmp, key) == -1) {
-        LinkedListAddAtHead(tmp, key);
+        LinkedList_AddAtHead(tmp, key);
     }
 }
 
@@ -70,7 +70,7 @@ void HashSet_del(HashSet *obj, int key) {
 
 void HashMap_Free(HashSet *obj) {
     for (int i = 0; i < obj->num_bucket; i++) {
-        LinkedListFree(obj->linkedList[i]);
+        LinkedList_Free(obj->linkedList[i]);
     }
     free(obj->linkedList);
     free(obj);

@@ -16,6 +16,7 @@ void DynamicArrayP_Push(DynamicArrayP *arr, int idx, void *data) {
     if (arr->size == arr->capacity) {
         DynamicArrayP_Reloc(arr, arr->capacity * 2);
     } else {
+//        不放到 else 里面也行
         for (int i = arr->size; i > idx; i--) {
             arr->pAddr[i] = arr->pAddr[i - 1];
         }

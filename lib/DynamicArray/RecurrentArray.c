@@ -2,7 +2,7 @@
 //循环array
 
 
-Rec_Array *Init_REC_ARRAY(int capacity) {
+Rec_Array *RecArray_Init(int capacity) {
     Rec_Array *arr = (Rec_Array *) malloc(sizeof(Rec_Array));
     arr->front = 1;
     arr->tail = 0;
@@ -14,27 +14,27 @@ Rec_Array *Init_REC_ARRAY(int capacity) {
 };
 
 //尾部插入
-void Push_Rec_Array(Rec_Array *arr, DATA_TYPE val) {
-    assert(!Is_Full_Rec_Array(arr));
+void RecArray_Push(Rec_Array *arr, DATA_TYPE val) {
+    assert(!RecArray_IsFull(arr));
     arr->tail = (arr->tail + 1) % arr->size;
     arr->pAddr[arr->tail] = val;
 };
 
 // 获取头部
-DATA_TYPE Get_Front_Rec_Array(Rec_Array *arr) {
-    assert(!Is_Full_Rec_Array(arr));
+DATA_TYPE RecArray_GetFront(Rec_Array *arr) {
+    assert(!RecArray_IsFull(arr));
     return arr->pAddr[arr->front];
 }
 
 //删除头部
-void Del_Front_Rec_Array(Rec_Array *arr) {
-    assert(!Is_Full_Rec_Array(arr));
+void RecArray_DelFront(Rec_Array *arr) {
+    assert(!RecArray_IsFull(arr));
     arr->front = (arr->front + 1) % arr->size;
 }
 
 // 获取头部，然后删掉它
 DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr) {
-    assert(!Is_Full_Rec_Array(arr));
+    assert(!RecArray_IsFull(arr));
     DATA_TYPE tmp = arr->pAddr[arr->front];
     arr->front = (arr->front + 1) % arr->size;
     return tmp;
@@ -43,14 +43,14 @@ DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr) {
 
 
 //获取尾巴
-DATA_TYPE Get_Tail_Rec_Array(Rec_Array *arr) {
-    assert(!Is_Full_Rec_Array(arr));
+DATA_TYPE RecArray_GetTail(Rec_Array *arr) {
+    assert(!RecArray_IsFull(arr));
     return arr->pAddr[arr->tail];
 }
 
 //去除尾巴并返回它
-DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr) {
-    assert(!Is_Full_Rec_Array(arr));
+DATA_TYPE RecArray_PopTail(Rec_Array *arr) {
+    assert(!RecArray_IsFull(arr));
     DATA_TYPE tmp = arr->pAddr[arr->tail];
     arr->tail -= 1;
     if (arr->tail == -1) {
@@ -60,16 +60,16 @@ DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr) {
 }
 
 //是否为空
-int Is_Empty_Rec_Array(Rec_Array *arr) {
+int RecArray_IsEmpty(Rec_Array *arr) {
     return (arr->tail + 1) % arr->size == arr->front;
 }
 
 //是否已满
-int Is_Full_Rec_Array(Rec_Array *arr) {
+int RecArray_IsFull(Rec_Array *arr) {
     return (arr->tail + 2) % arr->size == arr->front;
 };
 
-void Free_Rec_Array(Rec_Array *arr) {
+void RecArray_Free(Rec_Array *arr) {
     free(arr->pAddr);
     free(arr);
 }

@@ -4,17 +4,15 @@ project(c_algorithm C)
 
 set(CMAKE_C_STANDARD 99)
 
-include_directories(DynamicArray/int)
 include_directories(DynamicArray/pointer)
-include_directories(DynamicArray/RecurrentArray)
 include_directories(DynamicArray)
 include_directories(LinkedList)
 include_directories(Hash)
 
 set(C_ALGO_H
-        DynamicArray/int/DynamicArray.h
+        DynamicArray/DynamicArray.h
         DynamicArray/pointer/DynamicArrayP.h
-        DynamicArray/RecurrentArray/RecurrentArray.h
+        DynamicArray/RecurrentArray.h
         DynamicArray/convertor.h
         LinkedList/LinkedList.h
         LinkedList/LinkedListP.h
@@ -26,9 +24,9 @@ set(C_ALGO_H
 
 
 set(C_ALGO_SRC
-        DynamicArray/int/DynamicArray.c
+        DynamicArray/DynamicArray.c
         DynamicArray/pointer/DynamicArrayP.c
-        DynamicArray/RecurrentArray/RecurrentArray.c
+        DynamicArray/RecurrentArray.c
         DynamicArray/convertor.c
         LinkedList/LinkedList.c
         LinkedList/LinkedListP.c

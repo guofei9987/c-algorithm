@@ -27,32 +27,32 @@ typedef struct REC_ARRAY {
 
 
 
-Rec_Array *Init_REC_ARRAY(int capacity);
+Rec_Array *RecArray_Init(int capacity);
 
 //尾部插入
-void Push_Rec_Array(Rec_Array *arr, DATA_TYPE val);
+void RecArray_Push(Rec_Array *arr, DATA_TYPE val);
 
 // 获取头部
-DATA_TYPE Get_Front_Rec_Array(Rec_Array *arr);
+DATA_TYPE RecArray_GetFront(Rec_Array *arr);
 
 //删除头部
-void Del_Front_Rec_Array(Rec_Array *arr);
+void RecArray_DelFront(Rec_Array *arr);
 
 // 获取头部，然后删掉它
 DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr);
 
 
 //获取尾巴
-DATA_TYPE Get_Tail_Rec_Array(Rec_Array *arr);
+DATA_TYPE RecArray_GetTail(Rec_Array *arr);
 
 //去除尾巴并返回它
-DATA_TYPE Pop_Tail_Rec_Array(Rec_Array *arr);
+DATA_TYPE RecArray_PopTail(Rec_Array *arr);
 
 //是否为空
-int Is_Empty_Rec_Array(Rec_Array *arr);
+int RecArray_IsEmpty(Rec_Array *arr);
 
 //是否已满
-int Is_Full_Rec_Array(Rec_Array *arr);
+int RecArray_IsFull(Rec_Array *arr);
 
-void Free_Push_Rec_Array();
+void RecArray_Free(Rec_Array *arr);
 #endif //C_ALGORITHM_RECURRENT_H

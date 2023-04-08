@@ -18,20 +18,20 @@ typedef struct {
 
 LinkedList *LinkedList_Init();
 
-int LinkedListGet(LinkedList *obj, int idx);
+int LinkedList_Get(LinkedList *obj, int idx);
 
-void LinkedListAddAtHead(LinkedList *obj, int val);
+void LinkedList_AddAtHead(LinkedList *obj, int val);
 
-void LinkedListAddAtTail(LinkedList *obj, int val);
+void LinkedList_AddAtTail(LinkedList *obj, int val);
 
-void LinkedListAddAtIndex(LinkedList *obj, int idx, int val);
+void LinkedList_AddAtIndex(LinkedList *obj, int idx, int val);
 
-void LinkedListDeleteAtIndex(LinkedList *obj, int idx);
+void LinkedList_DelAtIndex(LinkedList *obj, int idx);
 
 int LinkedList_DelByVal(LinkedList *obj, int val);
 
 int LinkedList_Find(LinkedList *obj, int val);
 
-void LinkedListFree(LinkedList *obj);
+void LinkedList_Free(LinkedList *obj);
 
 #endif //C_ALGORITHM_LINKEDLIST_H

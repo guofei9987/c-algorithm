@@ -11,7 +11,7 @@ LinkedList *LinkedList_Init() {
 }
 
 
-int LinkedListGet(LinkedList *obj, int idx) {
+int LinkedList_Get(LinkedList *obj, int idx) {
     if (idx >= obj->size) {
         return -1;
     }
@@ -22,7 +22,7 @@ int LinkedListGet(LinkedList *obj, int idx) {
     return p->val;
 }
 
-void LinkedListAddAtHead(LinkedList *obj, int val) {
+void LinkedList_AddAtHead(LinkedList *obj, int val) {
     LinkedNode *new = malloc(sizeof(LinkedNode));
     new->val = val;
     new->next = obj->head->next;
@@ -31,7 +31,7 @@ void LinkedListAddAtHead(LinkedList *obj, int val) {
     obj->size++;
 }
 
-void LinkedListAddAtTail(LinkedList *obj, int val) {
+void LinkedList_AddAtTail(LinkedList *obj, int val) {
     LinkedNode *p = obj->head;
     while (p->next) {
         p = p->next;
@@ -44,7 +44,7 @@ void LinkedListAddAtTail(LinkedList *obj, int val) {
     obj->size++;
 }
 
-void LinkedListAddAtIndex(LinkedList *obj, int idx, int val) {
+void LinkedList_AddAtIndex(LinkedList *obj, int idx, int val) {
     if (idx > obj->size) {
         return;
     }
@@ -60,7 +60,7 @@ void LinkedListAddAtIndex(LinkedList *obj, int idx, int val) {
     obj->size++;
 }
 
-void LinkedListDeleteAtIndex(LinkedList *obj, int idx) {
+void LinkedList_DelAtIndex(LinkedList *obj, int idx) {
     if (idx >= obj->size) {
         return;
     }
@@ -105,7 +105,7 @@ int LinkedList_Find(LinkedList *obj, int val) {
 }
 
 
-void LinkedListFree(LinkedList *obj) {
+void LinkedList_Free(LinkedList *obj) {
     LinkedNode *p = obj->head;
     while (p) {
         LinkedNode *tmp = p;
