@@ -1,5 +1,5 @@
-#ifndef C_ALGORITHM_AC_DAT_H
-#define C_ALGORITHM_AC_DAT_H
+#ifndef C_ALGORITHM_AHOCORASICKDOUBLEARRAYTRIE_H
+#define C_ALGORITHM_AHOCORASICKDOUBLEARRAYTRIE_H
 
 
 typedef struct {
@@ -41,7 +41,7 @@ AC_DAT *AC_DAT_Build_From_Words(int len_keywords, char **keywords, int ac_type);
 
 int *AC_DAT_Find_All(AC_DAT *acDat, char *s);
 
-#endif //C_ALGORITHM_AC_DAT_H
+#endif //C_ALGORITHM_AHOCORASICKDOUBLEARRAYTRIE_H
 
 
 

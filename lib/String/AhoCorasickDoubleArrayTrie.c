@@ -1,4 +1,4 @@
-#include "AC_DAT.h"
+#include "AhoCorasickDoubleArrayTrie.h"
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
