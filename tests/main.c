@@ -28,7 +28,11 @@ int main() {
     test_HashTable();
     test_HashTable_int();
 
-    test_AC_DAT();
+//    test_AC_DAT();
+
+     test_ac_dat_keywords();
+
+     test_ac_dat_pattern();
     return 0;
 }
 
