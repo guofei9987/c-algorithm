@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "AhoCorasickDoubleArrayTrie.h"
+#include "KMP.h"
 #include "Test_String.h"
-
 
 
 int test_ac_dat_keywords() {
@@ -32,7 +33,6 @@ int test_ac_dat_keywords() {
 }
 
 
-
 //正则匹配
 int test_ac_dat_pattern() {
     int num_keywords = 3;
@@ -59,3 +59,15 @@ int test_ac_dat_pattern() {
     return 0;
 }
 
+
+int test_kmp() {
+    char *pattern = "abcac";
+    KMP *kmp = KMP_Init(pattern);
+    assert(KMP_Search(kmp, "ababcabcacbab") == 5);
+    assert(KMP_Search(kmp, "abcac") == 0);
+    assert(KMP_Search(kmp, "abcac14123") == 0);
+    assert(KMP_Search(kmp, "ababcabcac") == 5);
+    assert(KMP_Search(kmp, "ababcab1cacbab") == -1);
+    KMP_Free(kmp);
+    return 0;
+}

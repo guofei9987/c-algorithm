@@ -20,6 +20,7 @@ set(C_ALGO_H
         Hash/Hash.h
         Hash/HashTable.h
         String/AhoCorasickDoubleArrayTrie.h
+        String/KMP.h
         )
 
 
@@ -33,6 +34,7 @@ set(C_ALGO_SRC
         Hash/Hash.c
         Hash/HashTable.c
         String/AhoCorasickDoubleArrayTrie.c
+        String/KMP.c
         )
 
 ADD_LIBRARY(c_algo SHARED ${C_ALGO_H} ${C_ALGO_SRC})
