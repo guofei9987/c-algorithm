@@ -1,8 +1,10 @@
 #include "DynamicArray.h"
 
-//初始化
+//动态数组初始化
 DynamicArray *DynamicArray_Init(int capacity) {
+//    申请内存
     DynamicArray *arr = (DynamicArray *) malloc(sizeof(DynamicArray));
+//    初始化
     arr->capacity = capacity;
     arr->size = 0;
     arr->pAddr = (int *) malloc(sizeof(int) * arr->capacity);
@@ -55,15 +57,18 @@ void DynamicArray_Print(DynamicArray *arr) {
     printf("\n");
 }
 
-//删除一个
+//根据索引删除
 void DynamicArray_Pop(DynamicArray *arr, int idx) {
     if (arr == NULL) {
         return;
     }
+
+//    判断索引是否有效
     if (idx < 0 || idx >= arr->size) {
         return;
     }
 
+//    删除，并填补空洞
     arr->size--;
     for (int i = idx; i < arr->size; i++) {
         arr->pAddr[i] = arr->pAddr[i + 1];
