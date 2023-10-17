@@ -6,9 +6,15 @@
 如何安装
 ```bash
 git clone git@github.com:guofei9987/c-algorithm.git
-cd c-algorithm/build
-cmake ..
+cd c-algorithm/
+cmake -B ./build
+cd build/
 sudo make install
+
+# 测试：
+cmake .. -DDO_TEST="True"
+make
+ctest
 ```
 
 ## 静态数组

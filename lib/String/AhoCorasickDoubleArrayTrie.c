@@ -135,6 +135,10 @@ void AC_DAT_Build(AC_DAT *acDat) {
 
 
 AC_DAT *AC_DAT_Build_From_Words(int len_keywords, char **keywords, int ac_type) {
+/*
+ * ac_type == 0 ：词匹配
+ * ac_type == 1 ：正则匹配。d 数字，w 字母，p 符号。
+ */
     int n_chars;
     if (ac_type == 0) {
         n_chars = 26 + 10 + 1;

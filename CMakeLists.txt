@@ -5,8 +5,9 @@ set(CMAKE_C_FLAGS "-O3")
 add_subdirectory(lib bin)
 
 # 测试
-if (EXISTS /usr/local/lib/libc_algo.dylib OR EXISTS /usr/local/lib/libc_algo.so OR EXISTS /usr/local/lib/libc_algo.dll)
+IF (DEFINED DO_TEST)
+    message(STATUS "测试 ${DO_TEST}")
     add_subdirectory(tests c_algorithm_tests)
     enable_testing()
     add_test(NAME tests COMMAND c_algorithm_tests/c_algorithm_tests)
-endif ()
+ENDIF ()
