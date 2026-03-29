@@ -31,7 +31,7 @@ void DynamicArray_LoseWeight(DynamicArray *arr) {
 }
 
 
-//尾部插入
+// 尾部插入
 void DynamicArray_Push(DynamicArray *arr, int val) {
     if (arr->size == arr->capacity) {
         DynamicArray_Reloc(arr, arr->capacity * 2);
@@ -40,12 +40,12 @@ void DynamicArray_Push(DynamicArray *arr, int val) {
     arr->size++;
 }
 
-//删除尾部并返回它（未测试）
+// 删除尾部并返回它（未测试）
 int DynamicArray_Pop_Tail(DynamicArray *arr) {
     return arr->pAddr[(arr->size--) - 1];
 }
 
-//打印
+// 打印
 void DynamicArray_Print(DynamicArray *arr) {
     if (arr == NULL) {
         return;
@@ -57,18 +57,18 @@ void DynamicArray_Print(DynamicArray *arr) {
     printf("\n");
 }
 
-//根据索引删除
+// 根据索引删除
 void DynamicArray_Pop(DynamicArray *arr, int idx) {
     if (arr == NULL) {
         return;
     }
 
-//    判断索引是否有效
+// 判断索引是否有效
     if (idx < 0 || idx >= arr->size) {
         return;
     }
 
-//    删除，并填补空洞
+// 删除，并填补空洞
     arr->size--;
     for (int i = idx; i < arr->size; i++) {
         arr->pAddr[i] = arr->pAddr[i + 1];
@@ -76,17 +76,17 @@ void DynamicArray_Pop(DynamicArray *arr, int idx) {
 
 }
 
-//取一个
+// 取一个
 int DynamicArray_Get(DynamicArray *arr, int idx) {
     return arr->pAddr[idx];
 }
 
-//赋值
+// 赋值
 void DynamicArray_Set(DynamicArray *arr, int idx, int val) {
     arr->pAddr[idx] = val;
 }
 
-//查找
+// 查找
 int DynamicArray_Find(DynamicArray *arr, int val) {
     for (int i = 0; i < arr->size; i++) {
         if (arr->pAddr[i] == val) {
@@ -97,7 +97,7 @@ int DynamicArray_Find(DynamicArray *arr, int val) {
 }
 
 
-//释放空间
+// 释放空间
 void DynamicArray_Free(DynamicArray *arr) {
     if (arr == NULL) {
         return;

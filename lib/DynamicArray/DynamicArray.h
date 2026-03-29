@@ -13,26 +13,26 @@ typedef struct DynamicArray {
 
 } DynamicArray;
 
-//初始化
+// 初始化
 DynamicArray *DynamicArray_Init(int capacity);
 
-//重新分配内存
+// 重新分配内存
 void DynamicArray_Reloc(DynamicArray *arr, int new_capacity);
 
 // 减少内存消耗
 void DynamicArray_LoseWeight(DynamicArray *arr);
 
 
-//打印
+// 打印
 void DynamicArray_Print(DynamicArray *arr);
 
-//尾部插入，性能 O（1）
+// 尾部插入，性能 O（1）
 void DynamicArray_Push(DynamicArray *arr, int val);
 
-//删除尾部并返回它（未测试）
+// 删除尾部并返回它（未测试）
 int DynamicArray_Pop_Tail(DynamicArray *arr);
 
-//删除
+// 删除
 void DynamicArray_Pop(DynamicArray *arr, int idx);
 
 int DynamicArray_Find(DynamicArray *arr, int val);
