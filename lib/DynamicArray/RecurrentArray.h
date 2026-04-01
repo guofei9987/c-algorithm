@@ -13,7 +13,7 @@
 #include <assert.h>
 
 
-
+// 早期的泛型方案（drop）
 #define DATA_TYPE int
 typedef struct REC_ARRAY {
     DATA_TYPE *pAddr; // 底层数组
