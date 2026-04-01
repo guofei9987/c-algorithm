@@ -1,22 +1,61 @@
 
-# c- algorithm
+# c-algorithm
 
-用 c 实现常见的数据结构
+用 C 实现常见的数据结构。
 
-如何安装
+## 当前改造进度
+
+项目正在逐步从旧的 `lib/` 结构迁移到更标准的库目录结构。
+
+第一步已经完成：
+
+1. 建立了 `src/`
+2. 建立了 `include/`
+3. 将 `DynamicArray` 的实现迁移到了 `src/DynamicArray.c`
+4. 将 `DynamicArray` 的公开头文件放到了 `include/c_algorithm/DynamicArray.h`
+5. 建立了对应测试 `tests/test_dynamic_array.c`
+
+## 如何构建和运行测试
+
 ```bash
-git clone git@github.com:guofei9987/c-algorithm.git
-cd c-algorithm/
-cmake -B ./build
-cd build/
-sudo make install
-
-# 测试：
-cmake .. -DDO_TEST="True"
-make
-ctest
+cmake -S . -B build
+cmake --build build
+ctest --test-dir build --output-on-failure
 ```
 
+如果你只想运行 `DynamicArray` 测试可执行文件，也可以直接执行：
+
+```bash
+./build/tests/dynamic_array_test
+```
+
+## 如何使用这个库
+
+构建并安装
+
+```bash
+cmake -S . -B build
+cmake --build build
+cmake --install build
+```
+
+使用
+```c
+#include "c_algorithm/DynamicArray.h"
+
+int main(void) {
+    DynamicArray *arr = DynamicArray_Init(2);
+    DynamicArray_Push(arr, 10);
+    DynamicArray_Push(arr, 20);
+    DynamicArray_Push(arr, 30);
+
+    DynamicArray_Print(arr);
+    DynamicArray_Free(arr);
+    return 0;
+}
+```
+
+# 算法
 ## 静态数组
 
 略
@@ -98,6 +137,4 @@ https://www.bilibili.com/video/BV1jb411V78H
 ## 二叉树
 
 ## n叉树
-
-
 
