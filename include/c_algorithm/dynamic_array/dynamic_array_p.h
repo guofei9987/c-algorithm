@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// dynamic array 的泛型版本，通过使用 void * 来存储任意类型的数据，用户需要自己管理内存和类型转换
 typedef struct DYNAMIC_ARRAY_P {
     void **pAddr;
     int capacity;
