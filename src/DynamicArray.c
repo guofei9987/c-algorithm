@@ -1,14 +1,19 @@
 #include "c_algorithm/DynamicArray.h"
 
-DynamicArray *DynamicArray_Init(int capacity) {
-    DynamicArray *arr = (DynamicArray *) malloc(sizeof(DynamicArray));
+//动态数组初始化
+c_algo_dynamic_array *c_algo_dynamic_array_init(int capacity) {
+//    申请内存
+    c_algo_dynamic_array *arr = (c_algo_dynamic_array *) malloc(sizeof(c_algo_dynamic_array));
+//    初始化
     arr->capacity = capacity;
     arr->size = 0;
     arr->pAddr = (int *) malloc(sizeof(int) * arr->capacity);
     return arr;
 }
 
-void DynamicArray_Reloc(DynamicArray *arr, int new_capacity) {
+//重新分配内存
+void c_algo_dynamic_array_reloc(c_algo_dynamic_array *arr, int new_capacity) {
+//    assert(new_capacity>arr->size)
     int *newPArr = (int *) malloc(sizeof(int) * new_capacity);
     memcpy(newPArr, arr->pAddr, sizeof(int) * arr->size);
     free(arr->pAddr);
@@ -16,15 +21,17 @@ void DynamicArray_Reloc(DynamicArray *arr, int new_capacity) {
     arr->capacity = new_capacity;
 }
 
-void DynamicArray_LoseWeight(DynamicArray *arr) {
+// 减少内存消耗
+void c_algo_dynamic_array_lose_weight(c_algo_dynamic_array *arr) {
     if (arr->size == 0) {
-        DynamicArray_Reloc(arr, 1);
+        c_algo_dynamic_array_reloc(arr, 1);
     } else {
-        DynamicArray_Reloc(arr, arr->size);
+        c_algo_dynamic_array_reloc(arr, arr->size);
     }
 }
 
-void DynamicArray_Print(DynamicArray *arr) {
+// 打印
+void c_algo_dynamic_array_print(c_algo_dynamic_array *arr) {
     if (arr == NULL) {
         return;
     }
@@ -35,42 +42,50 @@ void DynamicArray_Print(DynamicArray *arr) {
     printf("\n");
 }
 
-void DynamicArray_Push(DynamicArray *arr, int val) {
+// 尾部插入
+void c_algo_dynamic_array_push(c_algo_dynamic_array *arr, int val) {
     if (arr->size == arr->capacity) {
-        DynamicArray_Reloc(arr, arr->capacity * 2);
+        c_algo_dynamic_array_reloc(arr, arr->capacity * 2);
     }
     arr->pAddr[arr->size] = val;
     arr->size++;
 }
 
-int DynamicArray_Pop_Tail(DynamicArray *arr) {
+// 删除尾部并返回它（未测试）
+int c_algo_dynamic_array_pop_tail(c_algo_dynamic_array *arr) {
     return arr->pAddr[(arr->size--) - 1];
 }
 
-void DynamicArray_Pop(DynamicArray *arr, int idx) {
+// 根据索引删除
+void c_algo_dynamic_array_pop(c_algo_dynamic_array *arr, int idx) {
     if (arr == NULL) {
         return;
     }
 
+// 判断索引是否有效
     if (idx < 0 || idx >= arr->size) {
         return;
     }
 
+// 删除，并填补空洞
     arr->size--;
     for (int i = idx; i < arr->size; i++) {
         arr->pAddr[i] = arr->pAddr[i + 1];
     }
 }
 
-int DynamicArray_Get(DynamicArray *arr, int idx) {
+// 取一个
+int c_algo_dynamic_array_get(c_algo_dynamic_array *arr, int idx) {
     return arr->pAddr[idx];
 }
 
-void DynamicArray_Set(DynamicArray *arr, int idx, int val) {
+// 赋值
+void c_algo_dynamic_array_set(c_algo_dynamic_array *arr, int idx, int val) {
     arr->pAddr[idx] = val;
 }
 
-int DynamicArray_Find(DynamicArray *arr, int val) {
+// 查找
+int c_algo_dynamic_array_find(c_algo_dynamic_array *arr, int val) {
     for (int i = 0; i < arr->size; i++) {
         if (arr->pAddr[i] == val) {
             return i;
@@ -79,7 +94,8 @@ int DynamicArray_Find(DynamicArray *arr, int val) {
     return -1;
 }
 
-void DynamicArray_Free(DynamicArray *arr) {
+// 释放空间
+void c_algo_dynamic_array_free(c_algo_dynamic_array *arr) {
     if (arr == NULL) {
         return;
     }

@@ -44,13 +44,13 @@ cmake --install build
 #include "c_algorithm/DynamicArray.h"
 
 int main(void) {
-    DynamicArray *arr = DynamicArray_Init(2);
-    DynamicArray_Push(arr, 10);
-    DynamicArray_Push(arr, 20);
-    DynamicArray_Push(arr, 30);
+    c_algo_dynamic_array *arr = c_algo_dynamic_array_init(2);
+    c_algo_dynamic_array_push(arr, 10);
+    c_algo_dynamic_array_push(arr, 20);
+    c_algo_dynamic_array_push(arr, 30);
 
-    DynamicArray_Print(arr);
-    DynamicArray_Free(arr);
+    c_algo_dynamic_array_print(arr);
+    c_algo_dynamic_array_free(arr);
     return 0;
 }
 ```
@@ -137,4 +137,3 @@ https://www.bilibili.com/video/BV1jb411V78H
 ## 二叉树
 
 ## n叉树
-

@@ -3,38 +3,38 @@
 #include "c_algorithm/DynamicArray.h"
 
 static void test_push_and_expand(void) {
-    DynamicArray *arr = DynamicArray_Init(2);
+    c_algo_dynamic_array *arr = c_algo_dynamic_array_init(2);
 
-    DynamicArray_Push(arr, 10);
-    DynamicArray_Push(arr, 20);
-    DynamicArray_Push(arr, 30);
+    c_algo_dynamic_array_push(arr, 10);
+    c_algo_dynamic_array_push(arr, 20);
+    c_algo_dynamic_array_push(arr, 30);
 
     assert(arr->size == 3);
     assert(arr->capacity == 4);
-    assert(DynamicArray_Get(arr, 0) == 10);
-    assert(DynamicArray_Get(arr, 2) == 30);
+    assert(c_algo_dynamic_array_get(arr, 0) == 10);
+    assert(c_algo_dynamic_array_get(arr, 2) == 30);
 
-    DynamicArray_Free(arr);
+    c_algo_dynamic_array_free(arr);
 }
 
 static void test_pop_find_set_and_shrink(void) {
-    DynamicArray *arr = DynamicArray_Init(4);
+    c_algo_dynamic_array *arr = c_algo_dynamic_array_init(4);
 
     for (int i = 0; i < 4; i++) {
-        DynamicArray_Push(arr, i);
+        c_algo_dynamic_array_push(arr, i);
     }
 
-    DynamicArray_Pop(arr, 1);
+    c_algo_dynamic_array_pop(arr, 1);
     assert(arr->size == 3);
-    assert(DynamicArray_Find(arr, 2) == 1);
+    assert(c_algo_dynamic_array_find(arr, 2) == 1);
 
-    DynamicArray_Set(arr, 0, 42);
-    assert(DynamicArray_Get(arr, 0) == 42);
+    c_algo_dynamic_array_set(arr, 0, 42);
+    assert(c_algo_dynamic_array_get(arr, 0) == 42);
 
-    DynamicArray_LoseWeight(arr);
+    c_algo_dynamic_array_lose_weight(arr);
     assert(arr->capacity == arr->size);
 
-    DynamicArray_Free(arr);
+    c_algo_dynamic_array_free(arr);
 }
 
 int main(void) {
