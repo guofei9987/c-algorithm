@@ -11,8 +11,8 @@
 
 1. 建立了 `src/`
 2. 建立了 `include/`
-3. 将 `DynamicArray` 的实现迁移到了 `src/DynamicArray.c`
-4. 将 `DynamicArray` 的公开头文件放到了 `include/c_algorithm/DynamicArray.h`
+3. 将 `DynamicArray` 的实现迁移到了 `src/dynamic_array/dynamic_array.c`
+4. 将 `DynamicArray` 的公开头文件放到了 `include/c_algorithm/dynamic_array/dynamic_array.h`
 5. 建立了对应测试 `tests/test_dynamic_array.c`
 
 ## 如何构建和运行测试
@@ -41,7 +41,7 @@ cmake --install build
 
 使用
 ```c
-#include "c_algorithm/DynamicArray.h"
+#include "c_algorithm/dynamic_array/dynamic_array.h"
 
 int main(void) {
     c_algo_dynamic_array *arr = c_algo_dynamic_array_init(2);

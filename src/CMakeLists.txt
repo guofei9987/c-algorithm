@@ -1,7 +1,7 @@
 include(GNUInstallDirs)
 
 add_library(c_algorithm STATIC
-    DynamicArray.c
+    dynamic_array/dynamic_array.c
 )
 
 add_library(c_algorithm::c_algorithm ALIAS c_algorithm)
@@ -16,6 +16,6 @@ install(TARGETS c_algorithm
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-install(FILES ${PROJECT_SOURCE_DIR}/include/c_algorithm/DynamicArray.h
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/c_algorithm
+install(FILES ${PROJECT_SOURCE_DIR}/include/c_algorithm/dynamic_array/dynamic_array.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/c_algorithm/dynamic_array
 )

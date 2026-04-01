@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "c_algorithm/DynamicArray.h"
+#include "c_algorithm/dynamic_array/dynamic_array.h"
 
 static void test_push_and_expand(void) {
     c_algo_dynamic_array *arr = c_algo_dynamic_array_init(2);

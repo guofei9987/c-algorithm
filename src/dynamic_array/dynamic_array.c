@@ -1,4 +1,4 @@
-#include "c_algorithm/DynamicArray.h"
+#include "c_algorithm/dynamic_array/dynamic_array.h"
 
 //动态数组初始化
 c_algo_dynamic_array *c_algo_dynamic_array_init(int capacity) {
