@@ -14,6 +14,7 @@
 3. 将 `DynamicArray` 的实现迁移到了 `src/dynamic_array/dynamic_array.c`
 4. 将 `DynamicArray` 的公开头文件放到了 `include/c_algorithm/dynamic_array/dynamic_array.h`
 5. 建立了对应测试 `tests/test_dynamic_array.c`
+6. 将 `DynamicArrayP` 迁移到了 `src/dynamic_array/dynamic_array_p.c` 和 `include/c_algorithm/dynamic_array/dynamic_array_p.h`
 
 ## 如何构建和运行测试
 
