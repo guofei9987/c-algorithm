@@ -53,6 +53,8 @@ void c_algo_dynamic_array_push(c_algo_dynamic_array *arr, int val) {
 
 // 删除尾部并返回它
 int c_algo_dynamic_array_pop_tail(c_algo_dynamic_array *arr) {
+    assert(arr != NULL);
+    assert(arr->size > 0);
     return arr->pAddr[(arr->size--) - 1];
 }
 

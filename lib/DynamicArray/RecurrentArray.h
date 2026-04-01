@@ -16,10 +16,10 @@
 
 #define DATA_TYPE int
 typedef struct REC_ARRAY {
-    DATA_TYPE *pAddr;
-    int front;
-    int tail;
-    int size; // size 的大小，永远为 capacity + 1
+    DATA_TYPE *pAddr; // 底层数组
+    int front; // 头在数组中的位置
+    int tail; // 尾在数组中的位置
+    int size; // 底层数组的大小，永远为 capacity + 1，这是因为否则的话，front == tail 既可以表示空又可以表示满
     int capacity;
 } Rec_Array;
 

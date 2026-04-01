@@ -22,19 +22,19 @@ void RecArray_Push(Rec_Array *arr, DATA_TYPE val) {
 
 // 获取头部
 DATA_TYPE RecArray_GetFront(Rec_Array *arr) {
-    assert(!RecArray_IsFull(arr));
+    assert(!RecArray_IsEmpty(arr));
     return arr->pAddr[arr->front];
 }
 
 //删除头部
 void RecArray_DelFront(Rec_Array *arr) {
-    assert(!RecArray_IsFull(arr));
+    assert(!RecArray_IsEmpty(arr));
     arr->front = (arr->front + 1) % arr->size;
 }
 
 // 获取头部，然后删掉它
 DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr) {
-    assert(!RecArray_IsFull(arr));
+    assert(!RecArray_IsEmpty(arr));
     DATA_TYPE tmp = arr->pAddr[arr->front];
     arr->front = (arr->front + 1) % arr->size;
     return tmp;
@@ -44,13 +44,13 @@ DATA_TYPE Pop_Front_Rec_Array(Rec_Array *arr) {
 
 //获取尾巴
 DATA_TYPE RecArray_GetTail(Rec_Array *arr) {
-    assert(!RecArray_IsFull(arr));
+    assert(!RecArray_IsEmpty(arr));
     return arr->pAddr[arr->tail];
 }
 
 //去除尾巴并返回它
 DATA_TYPE RecArray_PopTail(Rec_Array *arr) {
-    assert(!RecArray_IsFull(arr));
+    assert(!RecArray_IsEmpty(arr));
     DATA_TYPE tmp = arr->pAddr[arr->tail];
     arr->tail -= 1;
     if (arr->tail == -1) {
