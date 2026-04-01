@@ -21,7 +21,7 @@ static int compare_person(const void *left, const void *right) {
 }
 
 static void test_dynamic_array_p_operations(void) {
-    DynamicArrayP *dynamic_array = DynamicArrayP_Init(2);
+    c_algo_dynamic_array_p *dynamic_array = c_algo_dynamic_array_p_init(2);
 
     Person people[] = {
         {"a", 1},
@@ -32,34 +32,34 @@ static void test_dynamic_array_p_operations(void) {
     };
 
     for (int i = 0; i < (int) (sizeof(people) / sizeof(Person)); i++) {
-        DynamicArrayP_PushTail(dynamic_array, &people[i]);
+        c_algo_dynamic_array_p_push_tail(dynamic_array, &people[i]);
     }
 
-    assert(((Person *) DynamicArrayP_GetByIdx(dynamic_array, 4))->age == 5);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 4))->age == 5);
 
     Person inserted = {"f", 9};
-    DynamicArrayP_Push(dynamic_array, 2, &inserted);
-    assert(((Person *) DynamicArrayP_GetByIdx(dynamic_array, 2))->age == 9);
+    c_algo_dynamic_array_p_push(dynamic_array, 2, &inserted);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 2))->age == 9);
     assert(dynamic_array->size == 6);
 
-    DynamicArrayP_Pop(dynamic_array, 3);
-    assert(((Person *) DynamicArrayP_GetByIdx(dynamic_array, 3))->age == 4);
+    c_algo_dynamic_array_p_pop(dynamic_array, 3);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 3))->age == 4);
 
-    DynamicArrayP_PopTail(dynamic_array);
+    c_algo_dynamic_array_p_pop_tail(dynamic_array);
     assert(dynamic_array->size == 4);
 
-    assert(DynamicArrayP_Find(dynamic_array, &people[1], compare_person) == 1);
+    assert(c_algo_dynamic_array_p_find(dynamic_array, &people[1], compare_person) == 1);
 
     Person same_value = {"b", 2};
-    assert(DynamicArrayP_Find(dynamic_array, &same_value, compare_person) == 1);
+    assert(c_algo_dynamic_array_p_find(dynamic_array, &same_value, compare_person) == 1);
 
-    assert(((Person *) DynamicArrayP_GetByIdx(dynamic_array, 2))->age == 9);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 2))->age == 9);
 
-    DynamicArrayP_SetByIdx(dynamic_array, 2, &people[4]);
-    assert(((Person *) DynamicArrayP_GetByIdx(dynamic_array, 2))->age == 5);
+    c_algo_dynamic_array_p_set_by_idx(dynamic_array, 2, &people[4]);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 2))->age == 5);
 
-    DynamicArrayP_Print(dynamic_array, print_person);
-    DynamicArrayP_Free(dynamic_array);
+    c_algo_dynamic_array_p_print(dynamic_array, print_person);
+    c_algo_dynamic_array_p_free(dynamic_array);
 }
 
 int main(void) {

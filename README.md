@@ -15,6 +15,7 @@
 4. 将 `DynamicArray` 的公开头文件放到了 `include/c_algorithm/dynamic_array/dynamic_array.h`
 5. 建立了对应测试 `tests/test_dynamic_array.c`
 6. 将 `DynamicArrayP` 迁移到了 `src/dynamic_array/dynamic_array_p.c` 和 `include/c_algorithm/dynamic_array/dynamic_array_p.h`
+7. 将 `DynamicArrayP` 的命名统一到了 `c_algo_dynamic_array_p_*`
 
 ## 如何构建和运行测试
 
@@ -67,8 +68,8 @@ int main(void) {
     - 实现在 [/DynamicArray/int](/lib/DynamicArray/int)
 2. 动态数组，NodeData 是 `void *`，因此动态数组的元素可以是 **任意类型**
     - 实现在 [/DynamicArray/pointer](/lib/DynamicArray/pointer)
-    - 可以自定义一个关于 **打印** 的函数指针，从而调用 `DynamicArrayP_Print` 来打印整个动态数组
-    - 可以自定义一个关于 **比较** 的函数指针，从而调用 `DynamicArrayP_Find` 来查找符合某种条件的元素
+    - 可以自定义一个关于 **打印** 的函数指针，从而调用 `c_algo_dynamic_array_p_print` 来打印整个动态数组
+    - 可以自定义一个关于 **比较** 的函数指针，从而调用 `c_algo_dynamic_array_p_find` 来查找符合某种条件的元素
     - 末尾添加/删除的复杂度 为 **O(1)**
     - 可以用来实现高效的 **Stack**
 3. 循环数组，元素是 int 类型

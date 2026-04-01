@@ -9,43 +9,43 @@ typedef struct DYNAMIC_ARRAY_P {
     void **pAddr;
     int capacity;
     int size;
-} DynamicArrayP;
+} c_algo_dynamic_array_p;
 
 //函数指针-打印一个节点
-typedef void (*PRINT_DATA)(void *);
+typedef void (*c_algo_dynamic_array_p_print_data)(void *);
 
 //函数指针-比较两个节点，不同返回0
-typedef int (*COMPARE_DATA)(const void *, const void *);
+typedef int (*c_algo_dynamic_array_p_compare_data)(const void *, const void *);
 
 //初始化
-DynamicArrayP *DynamicArrayP_Init(int capacity);
+c_algo_dynamic_array_p *c_algo_dynamic_array_p_init(int capacity);
 
 //打印
-void DynamicArrayP_Print(DynamicArrayP *arr, PRINT_DATA printData);
+void c_algo_dynamic_array_p_print(c_algo_dynamic_array_p *arr, c_algo_dynamic_array_p_print_data print_data);
 
 //删除
-void DynamicArrayP_Pop(DynamicArrayP *arr, int idx);
+void c_algo_dynamic_array_p_pop(c_algo_dynamic_array_p *arr, int idx);
 
 //插入
-void DynamicArrayP_Push(DynamicArrayP *arr, int idx, void *data);
+void c_algo_dynamic_array_p_push(c_algo_dynamic_array_p *arr, int idx, void *data);
 
 //插入到末尾
-void DynamicArrayP_PushTail(DynamicArrayP *arr, void *data);
+void c_algo_dynamic_array_p_push_tail(c_algo_dynamic_array_p *arr, void *data);
 
 //删除末尾，有问题
-void DynamicArrayP_PopTail(DynamicArrayP *arr);
+void c_algo_dynamic_array_p_pop_tail(c_algo_dynamic_array_p *arr);
 
-int DynamicArrayP_Find(DynamicArrayP *arr, void *data, COMPARE_DATA compareData);
+int c_algo_dynamic_array_p_find(c_algo_dynamic_array_p *arr, void *data, c_algo_dynamic_array_p_compare_data compare_data);
 
-void *DynamicArrayP_GetByIdx(DynamicArrayP *arr, int idx);
+void *c_algo_dynamic_array_p_get_by_idx(c_algo_dynamic_array_p *arr, int idx);
 
-void DynamicArrayP_SetByIdx(DynamicArrayP *arr, int idx, void *data);
+void c_algo_dynamic_array_p_set_by_idx(c_algo_dynamic_array_p *arr, int idx, void *data);
 
-void DynamicArrayP_Reloc(DynamicArrayP *arr, int new_capacity);
+void c_algo_dynamic_array_p_reloc(c_algo_dynamic_array_p *arr, int new_capacity);
 
-void DynamicArrayP_LoseWeight(DynamicArrayP *arr);
+void c_algo_dynamic_array_p_lose_weight(c_algo_dynamic_array_p *arr);
 
 // 释放空间
-void DynamicArrayP_Free(DynamicArrayP *arr);
+void c_algo_dynamic_array_p_free(c_algo_dynamic_array_p *arr);
 
 #endif
