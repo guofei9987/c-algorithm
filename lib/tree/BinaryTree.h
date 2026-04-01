@@ -4,7 +4,8 @@
 
 struct TreeNode {
     int val;
-    struct TreeNode *left, *right;
+    struct TreeNode *left;
+    struct TreeNode *right;
 };
 
 //DLR
