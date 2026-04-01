@@ -16,11 +16,8 @@ add_test(NAME dynamic_array_p_test COMMAND dynamic_array_p_test)
 
 add_executable(recurrent_array_test
     dynamic_array/test_recurrent_array.c
-    ../lib/DynamicArray/RecurrentArray.c
 )
 
-target_include_directories(recurrent_array_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/lib/DynamicArray
-)
+target_link_libraries(recurrent_array_test PRIVATE c_algorithm)
 
 add_test(NAME recurrent_array_test COMMAND recurrent_array_test)

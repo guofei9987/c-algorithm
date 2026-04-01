@@ -1,33 +1,33 @@
 #include <assert.h>
 
-#include "RecurrentArray.h"
+#include "c_algorithm/dynamic_array/recurrent_array.h"
 
 static void test_rec_array_queue_behavior(void) {
-    Rec_Array *rec_array = RecArray_Init(4);
+    c_algo_recurrent_array *rec_array = c_algo_recurrent_array_init(4);
 
-    assert(RecArray_IsEmpty(rec_array));
+    assert(c_algo_recurrent_array_is_empty(rec_array));
 
-    RecArray_Push(rec_array, 1);
-    RecArray_Push(rec_array, 2);
-    RecArray_Push(rec_array, 3);
+    c_algo_recurrent_array_push(rec_array, 1);
+    c_algo_recurrent_array_push(rec_array, 2);
+    c_algo_recurrent_array_push(rec_array, 3);
 
-    assert(!RecArray_IsEmpty(rec_array));
-    assert(RecArray_GetFront(rec_array) == 1);
-    assert(RecArray_GetTail(rec_array) == 3);
-    assert(Pop_Front_Rec_Array(rec_array) == 1);
-    assert(Pop_Front_Rec_Array(rec_array) == 2);
+    assert(!c_algo_recurrent_array_is_empty(rec_array));
+    assert(c_algo_recurrent_array_get_front(rec_array) == 1);
+    assert(c_algo_recurrent_array_get_tail(rec_array) == 3);
+    assert(c_algo_recurrent_array_pop_front(rec_array) == 1);
+    assert(c_algo_recurrent_array_pop_front(rec_array) == 2);
 
-    RecArray_Push(rec_array, 4);
-    RecArray_Push(rec_array, 5);
+    c_algo_recurrent_array_push(rec_array, 4);
+    c_algo_recurrent_array_push(rec_array, 5);
 
-    assert(RecArray_GetFront(rec_array) == 3);
-    assert(RecArray_GetTail(rec_array) == 5);
-    assert(RecArray_PopTail(rec_array) == 5);
+    assert(c_algo_recurrent_array_get_front(rec_array) == 3);
+    assert(c_algo_recurrent_array_get_tail(rec_array) == 5);
+    assert(c_algo_recurrent_array_pop_tail(rec_array) == 5);
 
-    RecArray_DelFront(rec_array);
-    assert(RecArray_GetFront(rec_array) == 4);
+    c_algo_recurrent_array_del_front(rec_array);
+    assert(c_algo_recurrent_array_get_front(rec_array) == 4);
 
-    RecArray_Free(rec_array);
+    c_algo_recurrent_array_free(rec_array);
 }
 
 int main(void) {

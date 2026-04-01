@@ -16,6 +16,8 @@
 5. 建立了对应测试 `tests/test_dynamic_array.c`
 6. 将 `DynamicArrayP` 迁移到了 `src/dynamic_array/dynamic_array_p.c` 和 `include/c_algorithm/dynamic_array/dynamic_array_p.h`
 7. 将 `DynamicArrayP` 的命名统一到了 `c_algo_dynamic_array_p_*`
+8. 将 `RecurrentArray` 迁移到了 `src/dynamic_array/recurrent_array.c` 和 `include/c_algorithm/dynamic_array/recurrent_array.h`
+9. 将 `RecurrentArray` 的命名统一到了 `c_algo_recurrent_array_*`
 
 ## 如何构建和运行测试
 
@@ -73,7 +75,7 @@ int main(void) {
     - 末尾添加/删除的复杂度 为 **O(1)**
     - 可以用来实现高效的 **Stack**
 3. 循环数组，元素是 int 类型
-    - 实现在 [/DynamicArray/RecurrentArray](/lib/DynamicArray/RecurrentArray)
+    - 新结构实现在 `src/dynamic_array/recurrent_array.c`
     - 在 开头/末尾 的 添加/删除/修改，复杂度都是  **O(1)**
     - 暂时不支持 **动态扩容**，但可以新建时指定内存大小
     - 暂时不支持 **任意类型**
