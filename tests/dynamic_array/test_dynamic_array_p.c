@@ -62,7 +62,50 @@ static void test_dynamic_array_p_operations(void) {
     c_algo_dynamic_array_p_free(dynamic_array);
 }
 
+static void test_dynamic_array_p_insert_when_full(void) {
+    c_algo_dynamic_array_p *dynamic_array = c_algo_dynamic_array_p_init(2);
+
+    Person people[] = {
+        {"a", 1},
+        {"b", 2},
+        {"c", 3},
+    };
+
+    c_algo_dynamic_array_p_push_tail(dynamic_array, &people[0]);
+    c_algo_dynamic_array_p_push_tail(dynamic_array, &people[1]);
+    c_algo_dynamic_array_p_push(dynamic_array, 1, &people[2]);
+
+    assert(dynamic_array->size == 3);
+    assert(dynamic_array->capacity == 4);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 0))->age == 1);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 1))->age == 3);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 2))->age == 2);
+
+    c_algo_dynamic_array_p_free(dynamic_array);
+}
+
+static void test_dynamic_array_p_lose_weight(void) {
+    c_algo_dynamic_array_p *dynamic_array = c_algo_dynamic_array_p_init(4);
+
+    Person people[] = {
+        {"a", 1},
+        {"b", 2},
+    };
+
+    c_algo_dynamic_array_p_push_tail(dynamic_array, &people[0]);
+    c_algo_dynamic_array_p_push_tail(dynamic_array, &people[1]);
+    c_algo_dynamic_array_p_lose_weight(dynamic_array);
+
+    assert(dynamic_array->capacity == dynamic_array->size);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 0))->age == 1);
+    assert(((Person *) c_algo_dynamic_array_p_get_by_idx(dynamic_array, 1))->age == 2);
+
+    c_algo_dynamic_array_p_free(dynamic_array);
+}
+
 int main(void) {
     test_dynamic_array_p_operations();
+    test_dynamic_array_p_insert_when_full();
+    test_dynamic_array_p_lose_weight();
     return 0;
 }

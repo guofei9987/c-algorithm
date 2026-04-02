@@ -14,11 +14,10 @@ c_algo_dynamic_array_p *c_algo_dynamic_array_p_init(int capacity) {
 void c_algo_dynamic_array_p_push(c_algo_dynamic_array_p *arr, int idx, void *data) {
     if (arr->size == arr->capacity) {
         c_algo_dynamic_array_p_reloc(arr, arr->capacity * 2);
-    } else {
-//        不放到 else 里面也行
-        for (int i = arr->size; i > idx; i--) {
-            arr->pAddr[i] = arr->pAddr[i - 1];
-        }
+    }
+
+    for (int i = arr->size; i > idx; i--) {
+        arr->pAddr[i] = arr->pAddr[i - 1];
     }
 
     arr->pAddr[idx] = data;
@@ -41,8 +40,8 @@ void c_algo_dynamic_array_p_print(c_algo_dynamic_array_p *arr, c_algo_dynamic_ar
     printf("\n");
 }
 
-//删除一个
-// 被删除的 void *data 对应的内存不在这里释放，因为它不是 DynamicArray_Init 申请的
+// 删除一个
+// 被删除的 void *data 对应的内存不在这里释放，因为它不是 c_algo_dynamic_array_p_init 申请的
 void c_algo_dynamic_array_p_pop(c_algo_dynamic_array_p *arr, int idx) {
     if (arr == NULL) {
         return;
@@ -85,8 +84,9 @@ void c_algo_dynamic_array_p_pop_tail(c_algo_dynamic_array_p *arr) {
     c_algo_dynamic_array_p_pop(arr, arr->size - 1);
 }
 
+// 重新分配内存
 void c_algo_dynamic_array_p_reloc(c_algo_dynamic_array_p *arr, int new_capacity) {
-    assert(new_capacity > arr->size);
+    assert(new_capacity >= arr->size);
     void **newPArr = (void **) malloc(sizeof(void *) * new_capacity);
     memcpy(newPArr, arr->pAddr, sizeof(void *) * arr->size);
     free(arr->pAddr);
@@ -102,8 +102,8 @@ void c_algo_dynamic_array_p_lose_weight(c_algo_dynamic_array_p *arr) {
     }
 }
 
-//释放空间
-//不释放void * 指向的数据，因为它不是在 DynamicArrayP 中分配的内存
+// 释放空间
+// 不释放void * 指向的数据，因为它不是在 DynamicArrayP 中分配的内存
 void c_algo_dynamic_array_p_free(c_algo_dynamic_array_p *arr) {
     if (arr == NULL) {
         return;
