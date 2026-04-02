@@ -12,7 +12,7 @@ LinkedList *LinkedList_Init() {
 
 
 int LinkedList_Get(LinkedList *obj, int idx) {
-    if (idx >= obj->size) {
+    if (idx<0 || idx >= obj->size) {
         return -1;
     }
     LinkedNode *p = obj->head;
@@ -76,7 +76,7 @@ void LinkedList_DelAtIndex(LinkedList *obj, int idx) {
     obj->size--;
 }
 
-//删除第一个出现的val，未充分测试
+//删除第一个出现的 val
 int LinkedList_DelByVal(LinkedList *obj, int val) {
     LinkedNode *p = obj->head;
     while (p->next) {
@@ -87,6 +87,7 @@ int LinkedList_DelByVal(LinkedList *obj, int val) {
             obj->size--;
             return 1; // 成功删除
         }
+        p = p->next;
     }
     return 0;// 未找到
 }

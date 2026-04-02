@@ -126,8 +126,8 @@ int LinkedListP_DelByVal(LinkedListP *list, void *data, LinkedList_Cmp_Fun linke
             free(tmp);
             list->size--;
             return 1;// 成功删除
-
         }
+        p = p->next;
     }
     return 0;// 未找到
 };

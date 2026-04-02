@@ -67,7 +67,7 @@ int Find_Linked_List(Linked_List *linkedList, Linked_Node *data, COMPARE_NODE co
         idx++;
     }
 
-    return idx;
+    return -1;
 
 
 }
