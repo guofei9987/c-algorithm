@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+#include "c_algorithm/linked_list/linked_list.h"
 
 
 //统一建造含 dummy 的 LinkedList

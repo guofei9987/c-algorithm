@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "LinkedListP.h"
+#include "c_algorithm/linked_list/linked_list_p.h"
 
 //自定义数据类型
 typedef struct PERSON {
@@ -23,10 +23,7 @@ static int MyCmp(const void *data1,const void *data2){
 }
 
 
-int test_LinkList(void) {
-//    printf("======测试 %s ======\n", __FILE_NAME__);
-
-
+static void test_link_list_p(void) {
     //创建链表
     LinkedListP *linkedListP = LinkedListP_New();
 
@@ -60,7 +57,9 @@ int test_LinkList(void) {
 
     //销毁链表
     LinkedListP_Free(linkedListP);
+}
 
-//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
+int main(void) {
+    test_link_list_p();
     return 0;
 }

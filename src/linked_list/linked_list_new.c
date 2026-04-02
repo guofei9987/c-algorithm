@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+#include "c_algorithm/linked_list/linked_list_new.h"
 
 Linked_List *Init_Linked_List() {
     Linked_List *linkedList = (Linked_List *) malloc(sizeof(Linked_List));

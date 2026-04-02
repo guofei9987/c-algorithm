@@ -1,13 +1,7 @@
-#include "Test_LinkedList.h"
-#include "LinkedList.h"
-#include "convertor.h"
-
 #include <assert.h>
-#include <stdio.h>
+#include "c_algorithm/linked_list/linked_list.h"
 
-int test_LinkedList() {
-//    printf("======测试 %s ======\n", __FILE_NAME__);
-
+static void test_linked_list(void) {
     LinkedList *linkedList = LinkedList_Init();
     LinkedList_AddAtHead(linkedList, 1);
     LinkedList_AddAtHead(linkedList, 2);
@@ -20,14 +14,15 @@ int test_LinkedList() {
 
     assert(LinkedList_Get(linkedList, 1) == 1);
 
-    DynamicArray *dynamicArray = LinkedList2DynamicArray(linkedList);
-    DynamicArray_Print(dynamicArray);
-    free(dynamicArray);
+    // TODO: 正在迁移中，converter 还没迁移，先注释掉
+    //     DynamicArray *dynamicArray = LinkedList2DynamicArray(linkedList);
+    // DynamicArray_Print(dynamicArray);
+    // free(dynamicArray);
 
     LinkedList_Free(linkedList);
+}
 
-
-//    printf("=====测试完成 %s =====\n\n\n", __FILE_NAME__);
-
+int main(void) {
+    test_linked_list();
     return 0;
 }

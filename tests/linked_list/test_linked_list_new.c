@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <string.h>
-#include "LinkedList.h"
+#include "c_algorithm/linked_list/linked_list_new.h"
 
 typedef struct PERSON {
     Linked_Node linkedNode;
@@ -61,4 +61,9 @@ int test_LinkedList() {
 
 //    释放内存
     Free_Linked_List(linkedList);
+    return 0;
+}
+
+int main(void) {
+    return test_LinkedList();
 }
