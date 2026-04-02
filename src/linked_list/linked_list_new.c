@@ -55,7 +55,7 @@ int Find_Linked_List(Linked_List *linkedList, Linked_Node *data, COMPARE_NODE co
         return -1;
     }
 
-    Linked_Node *pCurr = &(linkedList->head);
+    Linked_Node *pCurr = linkedList->head.next;
 
     int idx = 0;
 
@@ -68,8 +68,6 @@ int Find_Linked_List(Linked_List *linkedList, Linked_Node *data, COMPARE_NODE co
     }
 
     return -1;
-
-
 }
 
 

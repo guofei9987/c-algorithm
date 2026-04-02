@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <string.h>
+#include <assert.h>
 #include "c_algorithm/linked_list/linked_list_new.h"
 
 typedef struct PERSON {
@@ -58,6 +59,12 @@ int test_LinkedList() {
     p_find.age = 2;
     int idx = Find_Linked_List(linkedList, (Linked_Node *) &p_find, My_Compare);
     printf("%d", idx);
+    assert(idx == 2);
+
+    Person p_missing;
+    strcpy(p_missing.name, "z");
+    p_missing.age = 99;
+    assert(Find_Linked_List(linkedList, (Linked_Node *) &p_missing, My_Compare) == -1);
 
 //    释放内存
     Free_Linked_List(linkedList);

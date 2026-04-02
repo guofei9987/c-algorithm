@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -54,6 +55,12 @@ static void test_link_list_p(void) {
     printf("-----查找结果------------\n");
     Person *ret = (Person *) LinkedListP_GetFront(linkedListP);
     printf("Name:%s Age:%d Score:%d\n", ret->name, ret->age, ret->score);
+
+    assert(LinkedListP_Find(linkedListP, &p[1], MyCmp) == -1);
+    assert(LinkedListP_DelByVal(linkedListP, &p[4], MyCmp) == 1);
+    assert(LinkedListP_DelByVal(linkedListP, &p[4], MyCmp) == 0);
+    assert(LinkedListP_GetByIdx(linkedListP, 0) == &p[3]);
+    assert(LinkedListP_GetByIdx(linkedListP, 100) == NULL);
 
     //销毁链表
     LinkedListP_Free(linkedListP);

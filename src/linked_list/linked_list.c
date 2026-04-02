@@ -92,7 +92,7 @@ int LinkedList_DelByVal(LinkedList *obj, int val) {
     return 0;// 未找到
 }
 
-//返回第一个出现的val，如果没找到则返回 -1，未充分测试
+//返回第一个出现的val，如果没找到则返回 -1
 int LinkedList_Find(LinkedList *obj, int val) {
     int idx = 0;
     LinkedNode *p = obj->head;
@@ -101,6 +101,7 @@ int LinkedList_Find(LinkedList *obj, int val) {
             return idx;
         }
         idx++;
+        p = p->next;
     }
     return -1;
 }

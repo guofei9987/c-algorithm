@@ -24,8 +24,8 @@ typedef int (*LinkedList_Cmp_Fun)(const void *, const void *);
 //初始化链表
 LinkedListP *LinkedListP_New();
 
-//TODO: 获取指定位置
-int LinkedListP_GetByIdx(LinkedListP *list, int idx);
+// 获取指定位置的元素，若越界则返回 NULL
+void *LinkedListP_GetByIdx(LinkedListP *list, int idx);
 
 //指定位置插入
 void LinkedListP_Insert(LinkedListP *list, int idx, void *data);

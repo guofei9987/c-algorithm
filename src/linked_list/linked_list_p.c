@@ -79,6 +79,21 @@ int LinkedListP_Size(LinkedListP *list) {
     return list->size;
 }
 
+void *LinkedListP_GetByIdx(LinkedListP *list, int idx) {
+    if (list == NULL) {
+        return NULL;
+    }
+    if (idx < 0 || idx >= list->size) {
+        return NULL;
+    }
+
+    LinkedNodeP *pCurrent = list->head->next;
+    for (int i = 0; i < idx; i++) {
+        pCurrent = pCurrent->next;
+    }
+    return pCurrent->data;
+}
+
 //查找
 int LinkedListP_Find(LinkedListP *list, void *data, LinkedList_Cmp_Fun linkedListCmpFun) {
     if (list == NULL) {
@@ -105,6 +120,9 @@ int LinkedListP_Find(LinkedListP *list, void *data, LinkedList_Cmp_Fun linkedLis
 
 //查找第一个命中，并返回其指针
 void *LinkedListP_Find2(LinkedListP *list, void *data, LinkedList_Cmp_Fun linkedListCmpFun) {
+    if (list == NULL) {
+        return NULL;
+    }
     LinkedNodeP *pCurrent = list->head->next;
     while (pCurrent != NULL) {
         if (linkedListCmpFun(pCurrent->data, data)) {
@@ -135,6 +153,9 @@ int LinkedListP_DelByVal(LinkedListP *list, void *data, LinkedList_Cmp_Fun linke
 
 //返回第一个结点
 void *LinkedListP_GetFront(LinkedListP *list) {
+    if (list == NULL || list->head->next == NULL) {
+        return NULL;
+    }
     return list->head->next->data;
 }
 

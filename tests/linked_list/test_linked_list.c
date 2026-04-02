@@ -13,6 +13,10 @@ static void test_linked_list(void) {
     LinkedList_DelAtIndex(linkedList, 1);
 
     assert(LinkedList_Get(linkedList, 1) == 1);
+    assert(LinkedList_Find(linkedList, 3) == 2);
+    assert(LinkedList_Find(linkedList, 42) == -1);
+    assert(LinkedList_DelByVal(linkedList, 42) == 0);
+    assert(LinkedList_DelByVal(linkedList, 3) == 1);
 
     // TODO: 正在迁移中，converter 还没迁移，先注释掉
     //     DynamicArray *dynamicArray = LinkedList2DynamicArray(linkedList);
