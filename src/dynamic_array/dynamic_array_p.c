@@ -24,7 +24,7 @@ void c_algo_dynamic_array_p_push(c_algo_dynamic_array_p *arr, int idx, void *dat
     arr->size++;
 }
 
-//插入
+// 尾部插入
 void c_algo_dynamic_array_p_push_tail(c_algo_dynamic_array_p *arr, void *data) {
     c_algo_dynamic_array_p_push(arr, arr->size, data);
 }
