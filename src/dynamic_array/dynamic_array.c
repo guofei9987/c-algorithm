@@ -1,19 +1,28 @@
+//动态数组
 #include "c_algorithm/dynamic_array/dynamic_array.h"
 
-//动态数组初始化
+// 初始化
 c_algo_dynamic_array *c_algo_dynamic_array_init(int capacity) {
-//    申请内存
+    // 申请内存
     c_algo_dynamic_array *arr = (c_algo_dynamic_array *) malloc(sizeof(c_algo_dynamic_array));
-//    初始化
+    // 初始化
     arr->capacity = capacity;
     arr->size = 0;
     arr->pAddr = (int *) malloc(sizeof(int) * arr->capacity);
     return arr;
 }
 
+// 获得大小
+int c_algo_dynamic_array_size(c_algo_dynamic_array *arr) {
+    if (arr == NULL) {
+        return -1;
+    }
+    return arr->size;
+}
+
 //重新分配内存
 void c_algo_dynamic_array_reloc(c_algo_dynamic_array *arr, int new_capacity) {
-//    assert(new_capacity>arr->size)
+    // assert(new_capacity>arr->size)
     int *newPArr = (int *) malloc(sizeof(int) * new_capacity);
     memcpy(newPArr, arr->pAddr, sizeof(int) * arr->size);
     free(arr->pAddr);
@@ -64,12 +73,12 @@ void c_algo_dynamic_array_pop(c_algo_dynamic_array *arr, int idx) {
         return;
     }
 
-// 判断索引是否有效
+    // 判断索引是否有效
     if (idx < 0 || idx >= arr->size) {
         return;
     }
 
-// 删除，并填补空洞
+    // 删除，并填补空洞
     arr->size--;
     for (int i = idx; i < arr->size; i++) {
         arr->pAddr[i] = arr->pAddr[i + 1];
@@ -106,3 +115,13 @@ void c_algo_dynamic_array_free(c_algo_dynamic_array *arr) {
     }
     free(arr);
 }
+
+// 验证 index 的合法性
+// static：只能在本文件中调用
+static int c_algo_dynamic_array_is_valid_index(c_algo_dynamic_array *arr, int idx) {
+    return arr != NULL && idx >= 0 && idx < arr->size;
+}
+
+
+
+

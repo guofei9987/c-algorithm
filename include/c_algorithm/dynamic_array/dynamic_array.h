@@ -16,6 +16,9 @@ typedef struct c_algo_dynamic_array {
 // 初始化
 c_algo_dynamic_array *c_algo_dynamic_array_init(int capacity);
 
+// 获得大小
+int c_algo_dynamic_array_size(c_algo_dynamic_array *arr);
+
 // 重新分配内存
 void c_algo_dynamic_array_reloc(c_algo_dynamic_array *arr, int new_capacity);
 
